@@ -1,7 +1,7 @@
 {
     "name": "libressltd/deeppermission",
     "description": "full stack package allow deep permission system",
-    "type": "composer-plugin",
+    "type": "library",
     "require": {
         "acacha/adminlte-laravel-installer": "^2.0"
     },
