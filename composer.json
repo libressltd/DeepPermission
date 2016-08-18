@@ -1,0 +1,16 @@
+{
+    "name": "libressltd/deeppermission",
+    "description": "full stack package allow deep permission system",
+    "type": "composer-plugin",
+    "require": {
+        "acacha/adminlte-laravel-installer": "^2.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "libre ss ltd",
+            "email": "contact@libreteam.com"
+        }
+    ],
+    "minimum-stability": "stable",
+}
