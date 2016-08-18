@@ -12,5 +12,10 @@
             "email": "contact@libreteam.com"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "LIBRESSLtd\\DeepPermission\\": "src/"
+        }
+    },
     "minimum-stability": "stable"
 }
