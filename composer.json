@@ -12,5 +12,5 @@
             "email": "contact@libreteam.com"
         }
     ],
-    "minimum-stability": "dev"
+    "minimum-stability": "stable"
 }
