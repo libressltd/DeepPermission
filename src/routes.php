@@ -1,3 +1,3 @@
 <?php
 
-Route::resource("role", "libressltd\deeppermission\RoleController");
+Route::resource("role", "libressltd\deeppermission\controllers\RoleController");

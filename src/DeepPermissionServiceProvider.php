@@ -27,6 +27,6 @@ class DeepPermissionServiceProvider extends ServiceProvider
     public function register()
     {
         include __DIR__.'/routes.php';
-        $this->app->make('LIBRESSLtd\DeepPermission\RoleController');
+        $this->app->make('LIBRESSLtd\DeepPermission\Controllers\RoleController');
     }
 }

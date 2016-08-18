@@ -1,6 +1,6 @@
 <?php
 
-namespace LIBRESSLtd\DeepPermission;
+namespace LIBRESSLtd\DeepPermission\Controllers;
 
 use Illuminate\Http\Request;
 
