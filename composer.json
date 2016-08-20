@@ -3,7 +3,9 @@
     "description": "full stack package allow deep permission system",
     "type": "library",
     "require": {
-        "acacha/adminlte-laravel-installer": "^2.0"
+        "acacha/adminlte-laravel-installer": "^2.0",
+        "acacha/admin-lte-template-laravel": "^2.0",
+        "libressltd/lbform": "^0.1.0"
     },
     "license": "MIT",
     "authors": [
