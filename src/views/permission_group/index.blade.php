@@ -10,24 +10,24 @@ Role &amp; Permission Management
 	<div class="col-md-6">
 		<div class="box box-solid">
 			<div class="box-header with-border">
-				<h3 class="box-title">Role Management</h3>
+				<h3 class="box-title">Permission group Management</h3>
 			</div>
 			<div class="box-body">
 				<table class="table table-bordered table-hover">
 					<thead>
 		                <tr>
 		                	<th>#</th>
-		                	<th>Role</th>
+		                	<th>Group</th>
 		                	<th>Code</th>
 		                	<th>Action</th>
 		                </tr>
 	                </thead>
 	                <tbody>
-	                	@foreach (App\Models\Role::all() as $role)
+	                	@foreach (App\Models\Permission_group::all() as $group)
 		                <tr>
-		                	<td>{{ $role->id }}.</td>
-		                	<td>{{ $role->name }}</td>
-		                	<td>{{ $role->code }}</td>
+		                	<td>{{ $group->id }}.</td>
+		                	<td>{{ $group->name }}</td>
+		                	<td>{{ $group->code }}</td>
 		                	<td>
 		                		<a class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
 		                	</td>
@@ -41,12 +41,12 @@ Role &amp; Permission Management
 	<div class="col-md-3">
 		<div class="box box-solid">
 			<div class="box-header with-border">
-				<h3 class="box-title">Add New Role</h3>
+				<h3 class="box-title">Add New Permission Group</h3>
 			</div>
 			<div class="box-body">
 				{!! Form::open(array("test", "post")) !!}
-				{!! Form::lbText("name", "", "Name", "Role's name") !!}
-				{!! Form::lbText("code", "", "Code", "Role's code", "For developer only") !!}
+				{!! Form::lbText("name", "", "Name", "Group's name") !!}
+				{!! Form::lbText("code", "", "Code", "Group's code", "For developer only") !!}
 				{!! Form::lbSubmit() !!}
 				{!! Form::close() !!}
             </div>

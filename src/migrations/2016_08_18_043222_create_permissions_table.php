@@ -16,7 +16,7 @@ class CreatePermissionsTable extends Migration
             $table->increments('id');
 			$table->string("name");
 			$table->string("code");
-			$table->integer("permission_group_id", 10)->unsigned();
+			$table->integer("permission_group_id")->unsigned();
             $table->timestamps();
         });
     }
