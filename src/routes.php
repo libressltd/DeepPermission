@@ -1,3 +1,5 @@
 <?php
 
-Route::resource("role", "libressltd\deeppermission\controllers\RoleController");
+Route::group(['middleware' => 'web'], function () {
+	Route::resource("role", "libressltd\deeppermission\controllers\RoleController");
+});

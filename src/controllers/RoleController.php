@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Auth;
+
+use App\Models\Role;
 
 class RoleController extends Controller
 {
@@ -16,7 +19,7 @@ class RoleController extends Controller
      */
     public function index()
     {
-        return view("role::index", array("current_time" => "test"));
+        return view("dp::role.index");
     }
 
     /**
@@ -26,7 +29,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+    	
     }
 
     /**
@@ -37,7 +40,12 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $role = new Role;
+		$role->name = $request->name;
+		$role->code = $request->code;
+		$role->save();
+		
+		return redirect(url("/role"));
     }
 
     /**
