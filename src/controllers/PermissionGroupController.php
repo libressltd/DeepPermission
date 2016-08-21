@@ -1,10 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace LIBRESSLtd\DeepPermission\Controllers;
 
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Controllers\Controller;
+
+use App\Models\Permission_group;
 
 class PermissionGroupController extends Controller
 {
@@ -25,7 +28,7 @@ class PermissionGroupController extends Controller
      */
     public function create()
     {
-        //
+    	
     }
 
     /**
@@ -36,7 +39,12 @@ class PermissionGroupController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $group = new Permission_group;
+		$group->name = $request->name;
+		$group->code = $request->code;
+		$group->save();
+		
+		return redirect(url("permission_group"));
     }
 
     /**

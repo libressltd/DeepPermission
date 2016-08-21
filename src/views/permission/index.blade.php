@@ -4,7 +4,7 @@
 Role &amp; Permission Management
 @endsection
 
-@section ('sidebox_permission_group')
+@section ('sidebox_permission')
 active
 @endsection
 
@@ -21,28 +21,19 @@ active
 					<thead>
 		                <tr>
 		                	<th>#</th>
-		                	<th>Group</th>
-		                	<th>Code</th>
 		                	<th>Permission</th>
+		                	<th>Code</th>
+		                	<th>Group</th>
 		                	<th>Action</th>
 		                </tr>
 	                </thead>
 	                <tbody>
-	                	@foreach (App\Models\Permission_group::with("permissions")->get() as $group)
+	                	@foreach (App\Models\Permission::all() as $permission)
 		                <tr>
-		                	<td>{{ $group->id }}.</td>
-		                	<td>{{ $group->name }}</td>
-		                	<td>{{ $group->code }}</td>
-		                	<td>
-		                		<?php
-		                		$permission_array = array();
-		                		foreach ($group->permissions as $permission)
-								{
-									$permission_array[] = $permission->code;
-								}
-								echo implode(", ", $permission_array);
-		                		?>
-		                	</td>
+		                	<td>{{ $permission->id }}.</td>
+		                	<td>{{ $permission->name }}</td>
+		                	<td>{{ $permission->code }}</td>
+		                	<td>{{ $permission->group->name }}</td>
 		                	<td>
 		                		<a class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
 		                	</td>
@@ -59,9 +50,10 @@ active
 				<h3 class="box-title">Add New Permission Group</h3>
 			</div>
 			<div class="box-body">
-				{!! Form::open(array("url" => "permission_group", "method" => "post")) !!}
-				{!! Form::lbText("name", "", "Name", "Group's name") !!}
-				{!! Form::lbText("code", "", "Code", "Group's code", "For developer only") !!}
+				{!! Form::open(array("url" => "permission", "method" => "post")) !!}
+				{!! Form::lbText("name", "", "Name", "Permission's name") !!}
+				{!! Form::lbText("code", "", "Code", "Permission's code", "For developer only") !!}
+				{!! Form::lbSelect2("permission_group_id", "0", App\Models\Permission_group::all_to_option(), "Group permission") !!}
 				{!! Form::lbSubmit() !!}
 				{!! Form::close() !!}
             </div>

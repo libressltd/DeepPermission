@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace LIBRESSLtd\DeepPermission\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 use App\Http\Requests;
+use App\Models\User;
 
 class UserRoleController extends Controller
 {
@@ -15,7 +17,7 @@ class UserRoleController extends Controller
      */
     public function index()
     {
-        //
+    	return view("dp::user_role.index");
     }
 
     /**
@@ -36,7 +38,18 @@ class UserRoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    	foreach (array_keys($_POST) as $key)
+		{
+			if (strpos($key, "user_") === 0)
+			{
+				$component = explode("_", $key);
+				$user_id = $component[1];
+				
+				$user = User::find($user_id);
+				$user->roles()->sync($_POST[$key]);
+			}
+		}
+		return redirect(url("user_role"));
     }
 
     /**

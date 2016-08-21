@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace LIBRESSLtd\DeepPermission\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 use App\Http\Requests;
+use App\Models\User;
 
 class UserPermissionController extends Controller
 {
@@ -13,9 +15,10 @@ class UserPermissionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($user_id)
     {
-        //
+        $user = User::findOrFail($user_id);
+		return view("dp::user.permission.index", array("user" => $user));
     }
 
     /**
@@ -34,9 +37,13 @@ class UserPermissionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $user_id)
     {
-        //
+    	$user = User::findOrFail($user_id);
+		$user->permissions()->sync($_POST['permission_id']);
+		$user->save();
+		
+		return redirect(url("/user/$user_id/permission"));
     }
 
     /**

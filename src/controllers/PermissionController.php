@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace LIBRESSLtd\DeepPermission\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 use App\Http\Requests;
+use App\Models\Permission;
 
 class PermissionController extends Controller
 {
@@ -15,7 +17,7 @@ class PermissionController extends Controller
      */
     public function index()
     {
-        //
+        return view("dp::permission.index");
     }
 
     /**
@@ -36,7 +38,13 @@ class PermissionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $permission = new Permission;
+		$permission->name = $request->name;
+		$permission->code = $request->code;
+		$permission->permission_group_id = $request->permission_group_id;
+		$permission->save();
+		
+		return redirect(url("permission"));
     }
 
     /**

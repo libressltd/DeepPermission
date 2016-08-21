@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace LIBRESSLtd\DeepPermission\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 use App\Http\Requests;
+use App\Models\Role;
 
 class RolePermissionController extends Controller
 {
@@ -13,9 +15,10 @@ class RolePermissionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($role_id)
     {
-        //
+    	$role = Role::findOrFail($role_id);
+        return view("dp::role.permission.index", array("role" => $role));
     }
 
     /**
@@ -34,9 +37,13 @@ class RolePermissionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $role_id)
     {
-        //
+    	$role = Role::findOrFail($role_id);
+		$role->permissions()->sync($_POST['permission_id']);
+		$role->save();
+		
+		return redirect(url("/role/$role_id/permission"));
     }
 
     /**

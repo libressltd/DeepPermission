@@ -31,5 +31,10 @@ class DeepPermissionServiceProvider extends ServiceProvider
     {
         include __DIR__.'/routes.php';
         $this->app->make('LIBRESSLtd\DeepPermission\Controllers\RoleController');
+        $this->app->make('LIBRESSLtd\DeepPermission\Controllers\PermissionGroupController');
+        $this->app->make('LIBRESSLtd\DeepPermission\Controllers\PermissionController');
+        $this->app->make('LIBRESSLtd\DeepPermission\Controllers\UserRoleController');
+        $this->app->make('LIBRESSLtd\DeepPermission\Controllers\RolePermissionController');
+        $this->app->make('LIBRESSLtd\DeepPermission\Controllers\UserPermissionController');
     }
 }
