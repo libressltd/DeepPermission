@@ -35,19 +35,23 @@ active
 		                	<td>{{ $permission->code }}</td>
 		                	<td>{{ $permission->group->name }}</td>
 		                	<td>
-		                		<a class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
+		                		<a class="btn btn-sm btn-primary" href="{{ url("/permission/$permission->id/edit") }}"><i class="fa fa-edit"></i></a>
+		                		{!! Form::lbButton("/permission/$permission->id", "delete", "<i class=\"fa fa-trash\"></i>", array("class" => "btn btn-sm btn-danger")) !!}
 		                	</td>
 		                </tr>
 		                @endforeach
 	                </tbody>
                 </table>
             </div>
+            <div class="box-footer">
+            	<a href="{{ url("permission/create") }}" class="btn btn-primary">Add new Permission</a>
+            </div>
 		</div>
 	</div>
 	<div class="col-md-3">
 		<div class="box box-solid">
 			<div class="box-header with-border">
-				<h3 class="box-title">Add New Permission Group</h3>
+				<h3 class="box-title">Quick add</h3>
 			</div>
 			<div class="box-body">
 				{!! Form::open(array("url" => "permission", "method" => "post")) !!}

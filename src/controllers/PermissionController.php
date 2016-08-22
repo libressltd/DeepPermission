@@ -27,7 +27,7 @@ class PermissionController extends Controller
      */
     public function create()
     {
-        //
+        return view("dp::permission.add");
     }
 
     /**
@@ -66,7 +66,8 @@ class PermissionController extends Controller
      */
     public function edit($id)
     {
-        //
+    	$permission = Permission::findOrFail($id);
+        return view("dp::permission.add", array("permission" => $permission));
     }
 
     /**
@@ -78,7 +79,13 @@ class PermissionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $permission = Permission::findOrFail($id);
+		$permission->name = $request->name;
+		$permission->code = $request->code;
+		$permission->permission_group_id = $request->permission_group_id;
+		$permission->save();
+		
+		return redirect(url("permission"));
     }
 
     /**
@@ -89,6 +96,9 @@ class PermissionController extends Controller
      */
     public function destroy($id)
     {
-        //
+    	$permission = Permission::findOrFail($id);
+		$permission->delete();
+		
+		return redirect(url("permission"));
     }
 }
