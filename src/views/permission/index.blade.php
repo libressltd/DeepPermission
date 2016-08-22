@@ -33,7 +33,7 @@ active
 		                	<td>{{ $permission->id }}.</td>
 		                	<td>{{ $permission->name }}</td>
 		                	<td>{{ $permission->code }}</td>
-		                	<td>{{ $permission->group->name }}</td>
+		                	<td>{{ @$permission->group->name }}</td>
 		                	<td>
 		                		<a class="btn btn-sm btn-primary" href="{{ url("/permission/$permission->id/edit") }}"><i class="fa fa-edit"></i></a>
 		                		{!! Form::lbButton("/permission/$permission->id", "delete", "<i class=\"fa fa-trash\"></i>", array("class" => "btn btn-sm btn-danger")) !!}

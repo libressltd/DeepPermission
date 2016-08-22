@@ -33,14 +33,18 @@ active
 		                	<td>{{ $role->name }}</td>
 		                	<td>{{ $role->code }}</td>
 		                	<td>
-		                		<a class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
+		                		<a class="btn btn-sm btn-primary" href="{{ url("/role/$role->id/edit") }}"><i class="fa fa-edit"></i></a>
 		                		<a class="btn btn-sm btn-warning" href="{{ url("/role/$role->id/permission") }}"><i class="fa fa-key"></i></a>
+		                		{!! Form::lbButton("/role/$role->id", "delete", "<i class=\"fa fa-trash\"></i>", array("class" => "btn btn-sm btn-danger")) !!}
 		                	</td>
 		                </tr>
 		                @endforeach
 					</tbody>
 				</table>
 			</div>
+            <div class="box-footer">
+            	<a href="{{ url("role/create") }}" class="btn btn-primary">Add new Role</a>
+            </div>
 		</div>
 	</div>
 	<div class="col-md-3">

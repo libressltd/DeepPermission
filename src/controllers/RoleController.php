@@ -29,7 +29,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-    	
+        return view("dp::role.add");
     }
 
     /**
@@ -45,7 +45,7 @@ class RoleController extends Controller
 		$role->code = $request->code;
 		$role->save();
 		
-		return redirect(url("/role"));
+		return redirect(url("role"));
     }
 
     /**
@@ -67,7 +67,8 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        //
+    	$role = Role::findOrFail($id);
+        return view("dp::role.add", array("role" => $role));
     }
 
     /**
@@ -79,7 +80,12 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $role = Role::findOrFail($id);
+		$role->name = $request->name;
+		$role->code = $request->code;
+		$role->save();
+		
+		return redirect(url("role"));
     }
 
     /**
@@ -90,6 +96,9 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
-        //
+    	$role = Role::findOrFail($id);
+		$role->delete();
+		
+		return redirect(url("role"));
     }
 }

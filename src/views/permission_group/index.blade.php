@@ -44,12 +44,16 @@ active
 		                		?>
 		                	</td>
 		                	<td>
-		                		<a class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
+		                		<a class="btn btn-sm btn-primary" href="{{ url("/permission_group/$group->id/edit") }}"><i class="fa fa-edit"></i></a>
+		                		{!! Form::lbButton("/permission_group/$group->id", "delete", "<i class=\"fa fa-trash\"></i>", array("class" => "btn btn-sm btn-danger")) !!}
 		                	</td>
 		                </tr>
 		                @endforeach
 	                </tbody>
                 </table>
+            </div>
+            <div class="box-footer">
+            	<a href="{{ url("permission_group/create") }}" class="btn btn-primary">Add new Permission Group</a>
             </div>
 		</div>
 	</div>
