@@ -35,7 +35,10 @@ active
 		                	<td>
 		                		<a class="btn btn-sm btn-primary" href="{{ url("/role/$role->id/edit") }}"><i class="fa fa-edit"></i></a>
 		                		<a class="btn btn-sm btn-warning" href="{{ url("/role/$role->id/permission") }}"><i class="fa fa-key"></i></a>
-		                		{!! Form::lbButton("/role/$role->id", "delete", "<i class=\"fa fa-trash\"></i>", array("class" => "btn btn-sm btn-danger")) !!}
+		                		{!! Form::lbButton("/role/$role->id", "delete", "<i class=\"fa fa-trash\"></i>", array(
+		                			"class" => "btn btn-sm btn-danger",
+		                			"onclick" => "return confirm(\"Are you sure?\")"
+		                		)) !!}
 		                	</td>
 		                </tr>
 		                @endforeach

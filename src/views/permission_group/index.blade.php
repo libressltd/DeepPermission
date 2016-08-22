@@ -45,7 +45,10 @@ active
 		                	</td>
 		                	<td>
 		                		<a class="btn btn-sm btn-primary" href="{{ url("/permission_group/$group->id/edit") }}"><i class="fa fa-edit"></i></a>
-		                		{!! Form::lbButton("/permission_group/$group->id", "delete", "<i class=\"fa fa-trash\"></i>", array("class" => "btn btn-sm btn-danger")) !!}
+		                		{!! Form::lbButton("/permission_group/$group->id", "delete", "<i class=\"fa fa-trash\"></i>", array(
+		                			"class" => "btn btn-sm btn-danger",
+		                			"onclick" => "return confirm(\"Are you sure?\")"
+		                		)) !!}
 		                	</td>
 		                </tr>
 		                @endforeach

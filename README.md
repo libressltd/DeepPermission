@@ -17,10 +17,10 @@ php artisan vendor:publish --tag=deeppermission --force
 	
 public function roles()
 {
-    return $this->belongsToMany('App\Models\Role', "user_roles", "role_id", "user_id");
+    return $this->belongsToMany('App\Models\Role', "user_roles", "user_id", "role_id");
 }
 
 public function permissions()
 {
-    return $this->belongsToMany('App\Models\Permission', "user_permissions", "permission_id", "user_id");
+    return $this->belongsToMany('App\Models\Permission', "user_permissions", "user_id", "permission_id");
 }
