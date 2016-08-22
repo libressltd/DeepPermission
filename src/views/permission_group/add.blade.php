@@ -29,8 +29,8 @@ active
 				{!! Form::open(array("url" => "permission_group/$group->id", "method" => "put")) !!}
 				@endif
 				
-				{!! Form::lbText("name", @$group->name, "Name", "Group's name") !!}
-				{!! Form::lbText("code", @$group->code, "Code", "Group's code", "For developer only") !!}
+				{!! Form::lbText("name", @$group->name, "Name", "Group's name", null, array("required" => TRUE)) !!}
+				{!! Form::lbText("code", @$group->code, "Code", "Group's code", "For developer only", array("required" => TRUE)) !!}
 				{!! Form::lbSubmit() !!}
 				{!! Form::close() !!}
             </div>

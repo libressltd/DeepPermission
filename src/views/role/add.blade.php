@@ -29,8 +29,8 @@ active
 				{!! Form::open(array("url" => "role/$role->id", "method" => "put")) !!}
 				@endif
 				
-				{!! Form::lbText("name", @$role->name, "Name", "Role's name") !!}
-				{!! Form::lbText("code", @$role->code, "Code", "Role's code", "For developer only") !!}
+				{!! Form::lbText("name", @$role->name, "Name", "Role's name", null, array("required" => TRUE)) !!}
+				{!! Form::lbText("code", @$role->code, "Code", "Role's code", "For developer only", array("required" => TRUE)) !!}
 				{!! Form::lbSubmit() !!}
 				{!! Form::close() !!}
             </div>

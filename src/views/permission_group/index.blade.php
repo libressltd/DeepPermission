@@ -67,8 +67,8 @@ active
 			</div>
 			<div class="box-body">
 				{!! Form::open(array("url" => "permission_group", "method" => "post")) !!}
-				{!! Form::lbText("name", "", "Name", "Group's name") !!}
-				{!! Form::lbText("code", "", "Code", "Group's code", "For developer only") !!}
+				{!! Form::lbText("name", "", "Name", "Group's name", null, array("required" => TRUE)) !!}
+				{!! Form::lbText("code", "", "Code", "Group's code", "For developer only", array("required" => TRUE)) !!}
 				{!! Form::lbSubmit() !!}
 				{!! Form::close() !!}
             </div>
