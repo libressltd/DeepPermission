@@ -43,5 +43,19 @@ active
 			</div>
 		</div>
 	</div>
+	<div class="col-md-3">
+		<div class="box box-solid">
+			<div class="box-header with-border">
+				<h3 class="box-title">Add New Role</h3>
+			</div>
+			<div class="box-body">
+				{!! Form::open(array("url" => "role", "method" => "post")) !!}
+				{!! Form::lbText("name", "", "Name", "Role's name") !!}
+				{!! Form::lbText("code", "", "Code", "Role's code", "For developer only") !!}
+				{!! Form::lbSubmit() !!}
+				{!! Form::close() !!}
+            </div>
+		</div>
+	</div>
 </div>
 @endsection
