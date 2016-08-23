@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Auth;
 
 class User extends Authenticatable
 {
@@ -86,6 +87,10 @@ class User extends Authenticatable
 	
 	public function hasRole($role_code)
 	{
+		if (Auth::user()->id == env("LIBRE_DP_ADMIN_ID", -1))
+		{
+			return TRUE;
+		}
 		$this->loadAllPermissionAndRole();
 		foreach ($this->__roles as $role)
 		{
@@ -99,6 +104,10 @@ class User extends Authenticatable
 	
 	public function hasPermission($permission_code)
 	{
+		if (Auth::user()->id == env("LIBRE_DP_ADMIN_ID", -1))
+		{
+			return TRUE;
+		}
 		$this->loadAllPermissionAndRole();
 		foreach ($this->__permissions as $permission)
 		{
