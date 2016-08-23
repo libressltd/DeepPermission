@@ -17,7 +17,7 @@ active
 				<h3 class="box-title">Permission group Management</h3>
 			</div>
 			<div class="box-body">
-				<table class="table table-bordered table-hover">
+				<table class="table table-bordered table-hover table-datatable" style="overflow: auto;">
 					<thead>
 		                <tr>
 		                	<th>#</th>
@@ -75,4 +75,9 @@ active
 		</div>
 	</div>
 </div>
+<script>
+	$(function () {
+	    $(".datatable").DataTable();
+	 });
+</script>
 @endsection
