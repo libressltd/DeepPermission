@@ -50,19 +50,19 @@ class User extends Authenticatable
 			$this->__localRoles = $this->roles()->with("permissions")->get();
 		}
 		
-		if ($this->__localPermission == NULL);
+		if ($this->__localPermissions == NULL);
 		{
-			$this->__localPermission = array();
+			$this->__localPermissions = array();
 			foreach ($this->permissions as $permission)
 			{
-				$this->__localPermission[] = $permission;
+				$this->__localPermissions[] = $permission;
 			}
 			foreach ($this->__localRoles as $role)
 			{
 				foreach ($role->permissions as $permission)
 				{
 					$found = FALSE;
-					foreach ($this->__localPermission as $p)
+					foreach ($this->__localPermissions as $p)
 					{
 						if ($p->id == $permission->id)
 						{
@@ -72,7 +72,7 @@ class User extends Authenticatable
 					}
 					if (!$found)
 					{
-						$this->__localPermission[] = $permission;
+						$this->__localPermissions[] = $permission;
 					}
 				}
 			}
@@ -82,7 +82,7 @@ class User extends Authenticatable
 	public function allPermission()
 	{
 		$this->loadAllPermissionAndRole();
-		return $this->__localPermission;
+		return $this->__localPermissions;
 	}
 	
 	public function hasRole($role_code)
@@ -109,7 +109,7 @@ class User extends Authenticatable
 			return TRUE;
 		}
 		$this->loadAllPermissionAndRole();
-		foreach ($this->__localPermission as $permission)
+		foreach ($this->__localPermissions as $permission)
 		{
 			if ($permission_code === $permission->code)
 			{

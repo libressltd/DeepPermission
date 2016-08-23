@@ -17,104 +17,104 @@ php artisan vendor:publish --tag=deeppermission --force
 	
 	
 ```php
-	/**
-	 * Addition function for DeepPermission
-	 * 
-	 */
-	 
-	public $__localPermissions = NULL;
-	public $__localRoles = NULL; 
-	
-    public function roles()
-    {
-        return $this->belongsToMany('App\Models\Role', "user_roles", "role_id", "user_id");
-    }
-	
-    public function permissions()
-    {
-        return $this->belongsToMany('App\Models\Permission', "user_permissions", "permission_id", "user_id");
-    }
-	
-	public function loadAllPermissionAndRole()
+/**
+ * Addition function for DeepPermission
+ * 
+ */
+ 
+public $__localPermissions = NULL;
+public $__localRoles = NULL; 
+
+public function roles()
+{
+    return $this->belongsToMany('App\Models\Role', "user_roles", "role_id", "user_id");
+}
+
+public function permissions()
+{
+    return $this->belongsToMany('App\Models\Permission', "user_permissions", "permission_id", "user_id");
+}
+
+public function loadAllPermissionAndRole()
+{
+	if ($this->__localRoles == NULL)
 	{
-		if ($this->__localRoles == NULL)
+		$this->__localRoles = $this->roles()->with("permissions")->get();
+	}
+	
+	if ($this->__localPermissions == NULL);
+	{
+		$this->__localPermissions = array();
+		foreach ($this->permissions as $permission)
 		{
-			$this->__localRoles = $this->roles()->with("permissions")->get();
+			$this->__localPermissions[] = $permission;
 		}
-		
-		if ($this->__localPermission == NULL);
+		foreach ($this->__localRoles as $role)
 		{
-			$this->__localPermission = array();
-			foreach ($this->permissions as $permission)
+			foreach ($role->permissions as $permission)
 			{
-				$this->__localPermission[] = $permission;
-			}
-			foreach ($this->__localRoles as $role)
-			{
-				foreach ($role->permissions as $permission)
+				$found = FALSE;
+				foreach ($this->__localPermissions as $p)
 				{
-					$found = FALSE;
-					foreach ($this->__localPermission as $p)
+					if ($p->id == $permission->id)
 					{
-						if ($p->id == $permission->id)
-						{
-							$found = TRUE;
-							break;
-						}
+						$found = TRUE;
+						break;
 					}
-					if (!$found)
-					{
-						$this->__localPermission[] = $permission;
-					}
+				}
+				if (!$found)
+				{
+					$this->__localPermissions[] = $permission;
 				}
 			}
 		}
 	}
-	
-	public function allPermission()
+}
+
+public function allPermission()
+{
+	$this->loadAllPermissionAndRole();
+	return $this->__localPermissions;
+}
+
+public function hasRole($role_code)
+{
+	if (Auth::user()->id == env("LIBRE_DP_ADMIN_ID", -1))
 	{
-		$this->loadAllPermissionAndRole();
-		return $this->__localPermission;
+		return TRUE;
 	}
-	
-	public function hasRole($role_code)
+	$this->loadAllPermissionAndRole();
+	foreach ($this->__localRoles as $role)
 	{
-		if (Auth::user()->id == env("LIBRE_DP_ADMIN_ID", -1))
+		if ($role_code === $role->code)
 		{
 			return TRUE;
 		}
-		$this->loadAllPermissionAndRole();
-		foreach ($this->__localRoles as $role)
-		{
-			if ($role_code === $role->code)
-			{
-				return TRUE;
-			}
-		}
-		return FALSE;
 	}
-	
-	public function hasPermission($permission_code)
+	return FALSE;
+}
+
+public function hasPermission($permission_code)
+{
+	if (Auth::user()->id == env("LIBRE_DP_ADMIN_ID", -1))
 	{
-		if (Auth::user()->id == env("LIBRE_DP_ADMIN_ID", -1))
+		return TRUE;
+	}
+	$this->loadAllPermissionAndRole();
+	foreach ($this->__localPermissions as $permission)
+	{
+		if ($permission_code === $permission->code)
 		{
 			return TRUE;
 		}
-		$this->loadAllPermissionAndRole();
-		foreach ($this->__localPermission as $permission)
-		{
-			if ($permission_code === $permission->code)
-			{
-				return TRUE;
-			}
-		}
-		return FALSE;
 	}
-	
-	/**
-	 * End of additional function
-	 * 
-	 */
+	return FALSE;
+}
+
+/**
+ * End of additional function
+ * 
+ */
 ```
 
 ### Step 5 (optional): If you want a user pass all the permission, add LIBRE_DP_ADMIN_ID to your .env file
