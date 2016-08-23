@@ -30,8 +30,8 @@ class User extends Authenticatable
 	 * 
 	 */
 	 
-	public $__permissions = NULL;
-	public $__roles = NULL; 
+	public $__localPermissions = NULL;
+	public $__localRoles = NULL; 
 	
     public function roles()
     {
@@ -45,24 +45,24 @@ class User extends Authenticatable
 	
 	public function loadAllPermissionAndRole()
 	{
-		if ($this->__roles == NULL)
+		if ($this->__localRoles == NULL)
 		{
-			$this->__roles = $this->roles()->with("permissions")->get();
+			$this->__localRoles = $this->roles()->with("permissions")->get();
 		}
 		
-		if ($this->__permissions == NULL);
+		if ($this->__localPermission == NULL);
 		{
-			$this->__permissions = array();
+			$this->__localPermission = array();
 			foreach ($this->permissions as $permission)
 			{
-				$this->__permissions[] = $permission;
+				$this->__localPermission[] = $permission;
 			}
-			foreach ($this->__roles as $role)
+			foreach ($this->__localRoles as $role)
 			{
 				foreach ($role->permissions as $permission)
 				{
 					$found = FALSE;
-					foreach ($this->__permissions as $p)
+					foreach ($this->__localPermission as $p)
 					{
 						if ($p->id == $permission->id)
 						{
@@ -72,7 +72,7 @@ class User extends Authenticatable
 					}
 					if (!$found)
 					{
-						$this->__permissions[] = $permission;
+						$this->__localPermission[] = $permission;
 					}
 				}
 			}
@@ -82,7 +82,7 @@ class User extends Authenticatable
 	public function allPermission()
 	{
 		$this->loadAllPermissionAndRole();
-		return $this->__permissions;
+		return $this->__localPermission;
 	}
 	
 	public function hasRole($role_code)
@@ -92,7 +92,7 @@ class User extends Authenticatable
 			return TRUE;
 		}
 		$this->loadAllPermissionAndRole();
-		foreach ($this->__roles as $role)
+		foreach ($this->__localRoles as $role)
 		{
 			if ($role_code === $role->code)
 			{
@@ -109,7 +109,7 @@ class User extends Authenticatable
 			return TRUE;
 		}
 		$this->loadAllPermissionAndRole();
-		foreach ($this->__permissions as $permission)
+		foreach ($this->__localPermission as $permission)
 		{
 			if ($permission_code === $permission->code)
 			{
