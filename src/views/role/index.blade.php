@@ -33,23 +33,31 @@ active
 		                	<td>{{ $role->name }}</td>
 		                	<td>{{ $role->code }}</td>
 		                	<td>
+		                		@if (Auth::user()->hasPermission("role.edit"))
 		                		<a class="btn btn-sm btn-primary" href="{{ url("/role/$role->id/edit") }}"><i class="fa fa-edit"></i></a>
 		                		<a class="btn btn-sm btn-warning" href="{{ url("/role/$role->id/permission") }}"><i class="fa fa-key"></i></a>
+		                		@endif
+		                		
+		                		@if (Auth::user()->hasPermission("role.delete"))
 		                		{!! Form::lbButton("/role/$role->id", "delete", "<i class=\"fa fa-trash\"></i>", array(
 		                			"class" => "btn btn-sm btn-danger",
 		                			"onclick" => "return confirm(\"Are you sure?\")"
 		                		)) !!}
+		                		@endif
 		                	</td>
 		                </tr>
 		                @endforeach
 					</tbody>
 				</table>
 			</div>
+			@if (Auth::user()->hasPermission("role.add"))
             <div class="box-footer">
             	<a href="{{ url("role/create") }}" class="btn btn-primary">Add new Role</a>
             </div>
+            @endif
 		</div>
 	</div>
+	@if (Auth::user()->hasPermission("role.add"))
 	<div class="col-md-3">
 		<div class="box box-solid">
 			<div class="box-header with-border">
@@ -64,5 +72,6 @@ active
             </div>
 		</div>
 	</div>
+	@endif
 </div>
 @endsection

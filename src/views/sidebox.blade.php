@@ -10,21 +10,25 @@
 						User's Role
 					</a>
 				</li>
+				@if (Auth::user()->hasPermission("role.view"))
 				<li class="@yield('sidebox_role')">
 					<a href="{{ url("role") }}">
 						Role
 					</a>
 				</li>
+				@endif
 				<li class="@yield('sidebox_permission_group')">
 					<a href="{{ url("permission_group") }}">
 						Group Permission
 					</a>
 				</li>
+				@if (Auth::user()->hasPermission("permission.view"))
 				<li class="@yield('sidebox_permission')">
 					<a href="{{ url("permission") }}">
 						Permission
 					</a>
 				</li>
+				@endif
 			</ul>
 		</div>
 	</div>
