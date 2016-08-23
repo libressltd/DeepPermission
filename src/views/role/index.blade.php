@@ -65,8 +65,8 @@ active
 			</div>
 			<div class="box-body">
 				{!! Form::open(array("url" => "role", "method" => "post")) !!}
-				{!! Form::lbText("name", "", "Name", "Role's name", null, array("required" => TRUE)) !!}
-				{!! Form::lbText("code", "", "Code", "Role's code", "For developer only", array("required" => TRUE)) !!}
+				{!! Form::lbText("name", "", "Name", "Role's name", null, config("lbform.CNF_REQUIRE_ANUM")) !!}
+				{!! Form::lbText("code", "", "Code", "Role's code", "For developer only", config("lbform.CNF_REQUIRE_ANUM")) !!}
 				{!! Form::lbSubmit() !!}
 				{!! Form::close() !!}
             </div>

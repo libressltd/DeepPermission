@@ -29,8 +29,8 @@ active
 				{!! Form::open(array("url" => "permission/$permission->id", "method" => "put")) !!}
 				@endif
 				
-				{!! Form::lbText("name", @$permission->name, "Name", "Permission's name", null, array("required" => TRUE)) !!}
-				{!! Form::lbText("code", @$permission->code, "Code", "Permission's code", "For developer only", array("required" => TRUE)) !!}
+				{!! Form::lbText("name", @$permission->name, "Name", "Permission's name", null, config("lbform.CNF_REQUIRE_ANUM")) !!}
+				{!! Form::lbText("code", @$permission->code, "Code", "Permission's code", "For developer only", config("lbform.CNF_REQUIRE_ANUM")) !!}
 				{!! Form::lbSelect2("permission_group_id", @$permission->permission_group_id, App\Models\Permission_group::all_to_option(), "Group permission") !!}
 				{!! Form::lbSubmit() !!}
 				{!! Form::close() !!}
