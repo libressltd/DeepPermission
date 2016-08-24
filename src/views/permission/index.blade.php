@@ -18,7 +18,7 @@ active
 	<div class="col-md-6">
 		<div class="box box-solid">
 			<div class="box-header with-border">
-				<h3 class="box-title">Permission group Management</h3>
+				<h3 class="box-title">Permission Management</h3>
 			</div>
 			<div class="box-body">
 				<table class="table table-bordered table-hover table-datatable" style="overflow-x: auto;">
