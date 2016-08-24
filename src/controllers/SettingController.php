@@ -3,18 +3,14 @@
 namespace LIBRESSLtd\DeepPermission\Controllers;
 
 use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Http\Requests;
 use App\Models\Permission_group;
+use App\Models\Permission;
 
-class PermissionGroupController extends Controller
+class SettingController extends Controller
 {
-	public function __construct()
-    {
-        $this->middleware('auth');
-	}
     /**
      * Display a listing of the resource.
      *
@@ -22,7 +18,7 @@ class PermissionGroupController extends Controller
      */
     public function index()
     {
-        return view("dp::permission_group.index");
+        return view("dp::setting.index");
     }
 
     /**
@@ -32,7 +28,7 @@ class PermissionGroupController extends Controller
      */
     public function create()
     {
-        return view("dp::permission_group.add");
+        //
     }
 
     /**
@@ -43,12 +39,7 @@ class PermissionGroupController extends Controller
      */
     public function store(Request $request)
     {
-        $group = new Permission_group;
-		$group->name = $request->name;
-		$group->code = $request->code;
-		$group->save();
-		
-		return redirect(url("permission/group"));
+        //
     }
 
     /**
@@ -70,8 +61,7 @@ class PermissionGroupController extends Controller
      */
     public function edit($id)
     {
-    	$group = Permission_group::findOrFail($id);
-        return view("dp::permission_group.add", array("group" => $group));
+        //
     }
 
     /**
@@ -83,12 +73,7 @@ class PermissionGroupController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $group = Permission_group::findOrFail($id);
-		$group->name = $request->name;
-		$group->code = $request->code;
-		$group->save();
-		
-		return redirect(url("permission/group"));
+        //
     }
 
     /**
@@ -99,9 +84,34 @@ class PermissionGroupController extends Controller
      */
     public function destroy($id)
     {
-    	$group = Permission_group::findOrFail($id);
-		$group->delete();
-		
-		return redirect(url("permission/group"));
+        //
     }
+	
+	public function getInitial()
+	{
+		Permission_group::addIfNotExist("Permission", "permission");
+		Permission_group::addIfNotExist("Permission Group", "permission_group");
+		Permission_group::addIfNotExist("Role", "role");
+		Permission_group::addIfNotExist("User Role", "user_role");
+		
+		Permission::addIfNotExist("Add", "permission.add");
+		Permission::addIfNotExist("Edit", "permission.edit");
+		Permission::addIfNotExist("Delete", "permission.delete");
+		Permission::addIfNotExist("View", "permission.view");
+		
+		Permission::addIfNotExist("Add", "permission_group.add");
+		Permission::addIfNotExist("Edit", "permission_group.edit");
+		Permission::addIfNotExist("Delete", "permission_group.delete");
+		Permission::addIfNotExist("View", "permission_group.view");
+		
+		Permission::addIfNotExist("Add", "role.add");
+		Permission::addIfNotExist("Edit", "role.edit");
+		Permission::addIfNotExist("Delete", "role.delete");
+		Permission::addIfNotExist("View", "role.view");
+		
+		Permission::addIfNotExist("View", "user_role.view");
+		Permission::addIfNotExist("Setting", "permission.setting");
+		
+		return redirect(url("permission/setting"));
+	}
 }

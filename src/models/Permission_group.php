@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Permission_group extends Model
 {
+	protected $fillable = array('code');
+	
     public function permissions()
     {
         return $this->hasMany('App\Models\Permission', "permission_group_id");
@@ -24,5 +26,12 @@ class Permission_group extends Model
 		}
 		
 		return $array;
+	}
+	
+	static public function addIfNotExist($group_name, $group_code)
+	{
+		$group = Permission_group::firstOrNew(array("code" => $group_code));
+		$group->name = $group_name;
+		$group->save();
 	}
 }

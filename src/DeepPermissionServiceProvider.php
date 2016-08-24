@@ -19,6 +19,7 @@ class DeepPermissionServiceProvider extends ServiceProvider
 	        __DIR__.'/views' => base_path('resources/views/libressltd/deeppermission'),
 	        __DIR__.'/migrations' => base_path('database/migrations'),
 	        __DIR__.'/models' => base_path('app/Models'),
+	        __DIR__.'/config' => base_path('config'),
 	    ], 'deeppermission');
     }
 
@@ -36,5 +37,6 @@ class DeepPermissionServiceProvider extends ServiceProvider
         $this->app->make('LIBRESSLtd\DeepPermission\Controllers\UserRoleController');
         $this->app->make('LIBRESSLtd\DeepPermission\Controllers\RolePermissionController');
         $this->app->make('LIBRESSLtd\DeepPermission\Controllers\UserPermissionController');
+        $this->app->make('LIBRESSLtd\DeepPermission\Controllers\SettingController');
     }
 }

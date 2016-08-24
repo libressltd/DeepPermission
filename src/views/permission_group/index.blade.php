@@ -48,35 +48,43 @@ active
 		                		?>
 		                	</td>
 		                	<td>
-		                		<a class="btn btn-sm btn-primary" href="{{ url("/permission_group/$group->id/edit") }}"><i class="fa fa-edit"></i></a>
-		                		{!! Form::lbButton("/permission_group/$group->id", "delete", "<i class=\"fa fa-trash\"></i>", array(
+		                		@if (Auth::user()->hasPermission("permission_group.edit"))
+		                		<a class="btn btn-sm btn-primary" href="{{ url("/permission/group/$group->id/edit") }}"><i class="fa fa-edit"></i></a>
+		                		@endif
+		                		@if (Auth::user()->hasPermission("permission_group.delete"))
+		                		{!! Form::lbButton("/permission/group/$group->id", "delete", "<i class=\"fa fa-trash\"></i>", array(
 		                			"class" => "btn btn-sm btn-danger",
 		                			"onclick" => "return confirm(\"Are you sure?\")"
 		                		)) !!}
+		                		@endif
 		                	</td>
 		                </tr>
 		                @endforeach
 	                </tbody>
                 </table>
             </div>
+            @if (Auth::user()->hasPermission("permission_group.add"))
             <div class="box-footer">
-            	<a href="{{ url("permission_group/create") }}" class="btn btn-primary">Add new Permission Group</a>
+            	<a href="{{ url("permission/group/create") }}" class="btn btn-primary">Add new Permission Group</a>
             </div>
+            @endif
 		</div>
 	</div>
+	@if (Auth::user()->hasPermission("permission_group.add"))
 	<div class="col-md-3">
 		<div class="box box-solid">
 			<div class="box-header with-border">
 				<h3 class="box-title">Add New Permission Group</h3>
 			</div>
 			<div class="box-body">
-				{!! Form::open(array("url" => "permission_group", "method" => "post")) !!}
+				{!! Form::open(array("url" => "permission/group", "method" => "post")) !!}
 				{!! Form::lbText("name", "", "Name", "Group's name", null, config("lbform.CNF_REQUIRE_ANUM")) !!}
-				{!! Form::lbText("code", "", "Code", "Group's code", "For developer only", config("lbform.CNF_REQUIRE_ANUM")) !!}
+				{!! Form::lbText("code", "", "Code", "Group's code", "For developer only", config("lbform.CNF_REQUIRE_ANUM_AND_POINT")) !!}
 				{!! Form::lbSubmit() !!}
 				{!! Form::close() !!}
             </div>
 		</div>
 	</div>
+	@endif
 </div>
 @endsection

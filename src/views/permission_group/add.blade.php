@@ -28,13 +28,13 @@ active
 			</div>
 			<div class="box-body">
 				@if (!isset($group))
-				{!! Form::open(array("url" => "permission_group", "method" => "post")) !!}
+				{!! Form::open(array("url" => "permission/group", "method" => "post")) !!}
 				@else
-				{!! Form::open(array("url" => "permission_group/$group->id", "method" => "put")) !!}
+				{!! Form::open(array("url" => "permission/group/$group->id", "method" => "put")) !!}
 				@endif
 				
-				{!! Form::lbText("name", @$group->name, "Name", "Group's name", null, config("lbform.CNF_REQUIRE_ANUM")) !!}
-				{!! Form::lbText("code", @$group->code, "Code", "Group's code", "For developer only", config("lbform.CNF_REQUIRE_ANUM")) !!}
+				{!! Form::lbText("name", @$group->name, "Name", "Group's name", null, config("deeppermission.CNF_REQUIRE_ANUM")) !!}
+				{!! Form::lbText("code", @$group->code, "Code", "Group's code", "For developer only", config("deeppermission.CNF_REQUIRE_ANUM_AND_POINT")) !!}
 				{!! Form::lbSubmit() !!}
 				{!! Form::close() !!}
             </div>

@@ -33,8 +33,8 @@ active
 				{!! Form::open(array("url" => "role/$role->id", "method" => "put")) !!}
 				@endif
 				
-				{!! Form::lbText("name", @$role->name, "Name", "Role's name", null, config("lbform.CNF_REQUIRE_ANUM")) !!}
-				{!! Form::lbText("code", @$role->code, "Code", "Role's code", "For developer only", config("lbform.CNF_REQUIRE_ANUM")) !!}
+				{!! Form::lbText("name", @$role->name, "Name", "Role's name", null, config("deeppermission.CNF_REQUIRE_ANUM")) !!}
+				{!! Form::lbText("code", @$role->code, "Code", "Role's code", "For developer only", config("deeppermission.CNF_REQUIRE_ANUM_AND_POINT")) !!}
 				{!! Form::lbSubmit() !!}
 				{!! Form::close() !!}
             </div>
