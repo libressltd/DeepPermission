@@ -8,6 +8,10 @@ Role &amp; Permission Management
 active
 @endsection
 
+@section ('sidebar_permission')
+active
+@endsection
+
 @section('main-content')
 <div class="row">
 	@include("dp::sidebox")
@@ -17,7 +21,7 @@ active
 				<h3 class="box-title">Permission group Management</h3>
 			</div>
 			<div class="box-body">
-				<table class="table table-bordered table-hover table-datatable">
+				<table class="table table-bordered table-hover table-datatable" style="overflow-x: auto;">
 					<thead>
 		                <tr>
 		                	<th>#</th>

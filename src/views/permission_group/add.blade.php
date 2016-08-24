@@ -8,6 +8,10 @@ Role &amp; Permission Management
 active
 @endsection
 
+@section ('sidebar_permission')
+active
+@endsection
+
 @section('main-content')
 <div class="row">
 	@include("dp::sidebox")
