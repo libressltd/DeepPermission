@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Auth;
 
 use App\Models\Role;
+use App\Http\Requests\DeepPermission\CreateRole;
 
 class RoleController extends Controller
 {
@@ -42,8 +43,12 @@ class RoleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateRole $request)
     {
+    	 $this->validate($request, array(
+	        'name' => 'required|unique:roles',
+	        'code' => 'required|unique:roles',
+	    ));
         $role = new Role;
 		$role->name = $request->name;
 		$role->code = $request->code;
@@ -82,7 +87,7 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CreateRole $request, $id)
     {
         $role = Role::findOrFail($id);
 		$role->name = $request->name;

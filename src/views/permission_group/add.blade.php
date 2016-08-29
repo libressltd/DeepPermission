@@ -27,6 +27,7 @@ active
 				</h3>
 			</div>
 			<div class="box-body">
+				{!! Form::lbAlert() !!}
 				@if (!isset($group))
 				{!! Form::open(array("url" => "permission/group", "method" => "post")) !!}
 				@else

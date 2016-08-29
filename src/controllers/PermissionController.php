@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 
 use App\Http\Requests;
 use App\Models\Permission;
+use App\Http\Requests\DeepPermission\CreatePermission;
 
 class PermissionController extends Controller
 {
@@ -40,7 +41,7 @@ class PermissionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreatePermission $request)
     {
         $permission = new Permission;
 		$permission->name = $request->name;
@@ -81,7 +82,7 @@ class PermissionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CreatePermission $request, $id)
     {
         $permission = Permission::findOrFail($id);
 		$permission->name = $request->name;

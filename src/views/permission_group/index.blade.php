@@ -77,6 +77,7 @@ active
 				<h3 class="box-title">Add New Permission Group</h3>
 			</div>
 			<div class="box-body">
+				{!! Form::lbAlert() !!}
 				{!! Form::open(array("url" => "permission/group", "method" => "post")) !!}
 				{!! Form::lbText("name", "", "Name", "Group's name", null, config("lbform.CNF_REQUIRE_ANUM")) !!}
 				{!! Form::lbText("code", "", "Code", "Group's code", "For developer only", config("lbform.CNF_REQUIRE_ANUM_AND_POINT")) !!}

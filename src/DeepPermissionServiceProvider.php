@@ -19,6 +19,7 @@ class DeepPermissionServiceProvider extends ServiceProvider
 	        __DIR__.'/views' => base_path('resources/views/libressltd/deeppermission'),
 	        __DIR__.'/migrations' => base_path('database/migrations'),
 	        __DIR__.'/models' => base_path('app/Models'),
+	        __DIR__.'/requests' => base_path('app/Http/Requests/DeepPermission'),
 	        __DIR__.'/config' => base_path('config'),
 	    ], 'deeppermission');
     }

@@ -68,6 +68,7 @@ active
 				<h3 class="box-title">Quick add</h3>
 			</div>
 			<div class="box-body">
+				{!! Form::lbAlert() !!}
 				{!! Form::open(array("url" => "permission", "method" => "post")) !!}
 				{!! Form::lbText("name", "", "Name", "Permission's name", null, config("deeppermission.CNF_REQUIRE_ANUM")) !!}
 				{!! Form::lbText("code", "", "Code", "Permission's code", "For developer only", config("deeppermission.CNF_REQUIRE_ANUM_AND_POINT")) !!}

@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Models\Permission_group;
+use App\Http\Requests\DeepPermission\CreatePermissionGroup;
 
 class PermissionGroupController extends Controller
 {
@@ -41,7 +42,7 @@ class PermissionGroupController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreatePermissionGroup $request)
     {
         $group = new Permission_group;
 		$group->name = $request->name;
@@ -81,7 +82,7 @@ class PermissionGroupController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CreatePermissionGroup $request, $id)
     {
         $group = Permission_group::findOrFail($id);
 		$group->name = $request->name;

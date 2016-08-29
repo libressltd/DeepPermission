@@ -27,6 +27,7 @@ active
 				</h3>
 			</div>
 			<div class="box-body">
+				{!! Form::lbAlert() !!}
 				@if (!isset($role))
 				{!! Form::open(array("url" => "role", "method" => "post")) !!}
 				@else
