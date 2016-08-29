@@ -25,7 +25,6 @@ active
 			?>
 			{!! Form::open(array("url" => "user_role", "method" => "post")) !!}
 			<div class="box-body">
-				test
 				<table class="table table-bordered table-hover table-datatable" style="overflow-x: auto;">
 					<thead>
 		                <tr>

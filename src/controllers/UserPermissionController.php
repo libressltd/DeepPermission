@@ -44,7 +44,15 @@ class UserPermissionController extends Controller
     public function store(Request $request, $user_id)
     {
     	$user = User::findOrFail($user_id);
-		$user->permissions()->sync($_POST['permission_id']);
+		
+		if (isset($request->permission_id) && count($request->permission_id))
+		{
+			$user->permissions()->sync($request->permission_id);
+		}
+		else
+		{
+			$user->permissions()->sync(array());
+		}
 		$user->save();
 		
 		return redirect(url("/user/$user_id/permission"));

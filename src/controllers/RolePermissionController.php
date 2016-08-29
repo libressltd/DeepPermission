@@ -44,7 +44,14 @@ class RolePermissionController extends Controller
     public function store(Request $request, $role_id)
     {
     	$role = Role::findOrFail($role_id);
-		$role->permissions()->sync($_POST['permission_id']);
+		if (isset($request->permission_id) && count($request->permission_id))
+		{
+			$role->permissions()->sync($request->permission_id);
+		}
+		else
+		{
+			$role->permissions()->sync(array());
+		}
 		$role->save();
 		
 		return redirect(url("/role/$role_id/permission"));
