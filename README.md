@@ -117,6 +117,12 @@ public function hasPermission($permission_code)
  */
 ```
 
+Add this row in the end of scripts.blade.php 
+
+```php
+@yield('dp_script')
+```
+
 ### Step 5 (optional): If you want a user pass all the permission, add LIBRE_DP_ADMIN_ID to your .env file
 
 ```bash

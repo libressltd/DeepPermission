@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('dp::app')
 
 @section ('contentheader_title')
 Role &amp; Permission Management
