@@ -13,6 +13,8 @@ class CreatePermissionGroupsTable extends Migration
     public function up()
     {
         Schema::create('permission_groups', function (Blueprint $table) {
+        	$table->engine = 'InnoDB';
+			
             $table->increments('id');
 			$table->string("name");
 			$table->string("code");
