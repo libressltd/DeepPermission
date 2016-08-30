@@ -21,6 +21,11 @@ active
 				<h3 class="box-title">Role Management</h3>
 			</div>
 			<div class="box-body">
+				@if (session('dp_announce'))
+				<div class="callout callout-success">
+					<p>{{ session('dp_announce') }}</p>
+				</div>
+				@endif
 				<table class="table table-bordered table-hover table-datatable" style="overflow-x: auto;">
 					<thead>
 		                <tr>

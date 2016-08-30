@@ -49,7 +49,7 @@ class PermissionGroupController extends Controller
 		$group->code = $request->code;
 		$group->save();
 		
-		return redirect(url("permission/group"));
+		return redirect(url("permission/group"))->with('dp_announce', 'Group created');
     }
 
     /**
@@ -89,7 +89,7 @@ class PermissionGroupController extends Controller
 		$group->code = $request->code;
 		$group->save();
 		
-		return redirect(url("permission/group"));
+		return redirect(url("permission/group"))->with('dp_announce', 'Groupe updated');
     }
 
     /**
@@ -103,6 +103,6 @@ class PermissionGroupController extends Controller
     	$group = Permission_group::findOrFail($id);
 		$group->delete();
 		
-		return redirect(url("permission/group"));
+		return redirect(url("permission/group"))->with('dp_announce', 'Group deleted');
     }
 }

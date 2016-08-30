@@ -22,19 +22,31 @@ active
 			</div>
 			{!! Form::open(array("url" => "/user/$user->id/permission", "method" => "post")) !!}
 			<div class="box-body">
+				@if (session('dp_announce'))
+				<div class="callout callout-success">
+					<p>{{ session('dp_announce') }}</p>
+				</div>
+				@endif
             	@foreach (App\Models\Permission_group::all() as $group)
                 	<div class="col-lg-12">
                 		<h4>{{ $group->name }}</h4>
                 	</div>
                 	@foreach ($group->permissions as $permission)
                 	<div class="col-lg-4">
-                		<input name="permission_id[]" type="checkbox" value="{{ $permission->id }}"
+                		<input type="checkbox" value="{{ $permission->id }}"
                 		<?php
-                			foreach ($user->permissions as $rp)
+                			$user->loadAllPermissionAndRole();
+                			foreach ($user->__permissions as $rp)
 							{
 								if ($permission->id === $rp->id)
 								{
-									echo "checked"; break;
+									if ($rp->inherited)
+									{
+										echo "checked disabled ";
+									}
+									else {
+										echo " name=\"permission_id[]\" checked "; break;
+									}
 								}
 							}
                 		?>

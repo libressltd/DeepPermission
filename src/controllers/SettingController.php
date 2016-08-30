@@ -112,6 +112,6 @@ class SettingController extends Controller
 		Permission::addIfNotExist("View", "user_role.view");
 		Permission::addIfNotExist("Setting", "permission.setting");
 		
-		return redirect(url("permission/setting"));
+		return redirect(url("permission/setting"))->with('dp_announce', 'Database initial success');
 	}
 }

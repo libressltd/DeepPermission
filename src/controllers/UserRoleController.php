@@ -53,7 +53,7 @@ class UserRoleController extends Controller
 				$user->roles()->sync($_POST[$key]);
 			}
 		}
-		return redirect(url("user_role"));
+		return redirect(url("user_role"))->with('dp_announce', 'User\'s role updated');
     }
 
     /**

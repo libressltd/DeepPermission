@@ -54,7 +54,7 @@ class RoleController extends Controller
 		$role->code = $request->code;
 		$role->save();
 		
-		return redirect(url("role"));
+		return redirect(url("role"))->with('dp_announce', 'Role created');
     }
 
     /**
@@ -94,7 +94,7 @@ class RoleController extends Controller
 		$role->code = $request->code;
 		$role->save();
 		
-		return redirect(url("role"));
+		return redirect(url("role"))->with('dp_announce', 'Role updated');
     }
 
     /**
@@ -108,6 +108,6 @@ class RoleController extends Controller
     	$role = Role::findOrFail($id);
 		$role->delete();
 		
-		return redirect(url("role"));
+		return redirect(url("role"))->with('dp_announce', 'Role deleted');
     }
 }

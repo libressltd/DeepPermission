@@ -49,7 +49,7 @@ class PermissionController extends Controller
 		$permission->permission_group_id = $request->permission_group_id;
 		$permission->save();
 		
-		return redirect(url("permission"));
+		return redirect(url("permission"))->with('dp_announce', 'Permission created');
     }
 
     /**
@@ -90,7 +90,7 @@ class PermissionController extends Controller
 		$permission->permission_group_id = $request->permission_group_id;
 		$permission->save();
 		
-		return redirect(url("permission"));
+		return redirect(url("permission"))->with('dp_announce', 'Permission updated');
     }
 
     /**
@@ -104,6 +104,6 @@ class PermissionController extends Controller
     	$permission = Permission::findOrFail($id);
 		$permission->delete();
 		
-		return redirect(url("permission"));
+		return redirect(url("permission"))->with('dp_announce', 'Permission deleted');
     }
 }
