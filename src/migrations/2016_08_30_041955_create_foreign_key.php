@@ -12,7 +12,7 @@ class CreateForeignKey extends Migration
      */
     public function up()
     {
-        Schema::table('permission', function (Blueprint $table) {
+        Schema::table('permissions', function (Blueprint $table) {
             $table->foreign('permission_group_id')->references('id')->on('permission_groups')->onDelete('cascade');
         });
         Schema::table('user_roles', function (Blueprint $table) {
@@ -36,7 +36,7 @@ class CreateForeignKey extends Migration
      */
     public function down()
     {
-        Schema::table('permission', function (Blueprint $table) {
+        Schema::table('permissions', function (Blueprint $table) {
             $table->dropForeign('permission_group_id_foreign');
         });
         Schema::table('user_roles', function (Blueprint $table) {
