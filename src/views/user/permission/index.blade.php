@@ -36,7 +36,7 @@ active
                 		<input type="checkbox" value="{{ $permission->id }}"
                 		<?php
                 			$user->loadAllPermissionAndRole();
-                			foreach ($user->__permissions as $rp)
+                			foreach ($user->__localPermissions as $rp)
 							{
 								if ($permission->id === $rp->id)
 								{
