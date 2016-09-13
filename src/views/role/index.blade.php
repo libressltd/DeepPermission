@@ -70,7 +70,7 @@ active
 	<div class="col-md-3">
 		<div class="box box-solid">
 			<div class="box-header with-border">
-				<h3 class="box-title">Add New Role</h3>
+				<h3 class="box-title">Quick Add</h3>
 			</div>
 			<div class="box-body">
 				{!! Form::lbAlert() !!}

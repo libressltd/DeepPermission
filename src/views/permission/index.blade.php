@@ -66,7 +66,7 @@ active
             @endif
 		</div>
 	</div>
-	@if (Auth::user()->hasPermission("permission.edit"))
+	@if (Auth::user()->hasPermission("permission.add"))
 	<div class="col-md-3">
 		<div class="box box-solid">
 			<div class="box-header with-border">

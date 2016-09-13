@@ -9,5 +9,4 @@ Route::group(['middleware' => 'web'], function () {
 	Route::resource("user.permission", "libressltd\deeppermission\controllers\UserPermissionController");
 	Route::resource("role", "libressltd\deeppermission\controllers\RoleController");
 	Route::resource("role.permission", "libressltd\deeppermission\controllers\RolePermissionController");
-	
 });
