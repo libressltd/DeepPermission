@@ -1,36 +1,9 @@
 <?php
 
-namespace App\Models;
+namespace LIBRESSLtd\DeepPermission\Traits;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Auth;
-
-class User extends Authenticatable
-{
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
-
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
-	
-	/**
-	 * Addition function for DeepPermission
-	 * 
-	 */
-	 
-	public $__localPermissions = NULL;
+trait DPUserModelTrait {
+    public $__localPermissions = NULL;
 	public $__localRoles = NULL; 
 	
     public function roles()
@@ -118,9 +91,4 @@ class User extends Authenticatable
 		}
 		return FALSE;
 	}
-	
-	/**
-	 * End of additional function
-	 * 
-	 */
 }

@@ -17,7 +17,10 @@
         "psr-4": {
             "LIBRESSLtd\\DeepPermission\\": "src/"
         },
-        "classmap": ["src/controllers"]
+        "classmap": [
+            "src/controllers",
+            "src/traits"
+        ]
     },
     "minimum-stability": "stable"
 }
