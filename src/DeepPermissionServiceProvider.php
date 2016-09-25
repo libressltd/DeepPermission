@@ -39,6 +39,6 @@ class DeepPermissionServiceProvider extends ServiceProvider
         $this->app->make('LIBRESSLtd\DeepPermission\Controllers\RolePermissionController');
         $this->app->make('LIBRESSLtd\DeepPermission\Controllers\UserPermissionController');
         $this->app->make('LIBRESSLtd\DeepPermission\Controllers\SettingController');
-        $this->app->make('LIBRESSLtd\DeepPermission\Traits\DPUserModelTrait');
+        // $this->app->make('LIBRESSLtd\DeepPermission\Traits\DPUserModelTrait');
     }
 }
