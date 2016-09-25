@@ -2,6 +2,8 @@
 
 namespace LIBRESSLtd\DeepPermission\Traits;
 
+use Auth;
+
 trait DPUserModelTrait {
     public $__localPermissions = NULL;
 	public $__localRoles = NULL; 
