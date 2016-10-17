@@ -93,4 +93,22 @@ trait DPUserModelTrait {
 		}
 		return FALSE;
 	}
+
+    public function scopeWithRole($query, $role_code)
+    {
+        return $this->whereHas('roles', function ($query) use ($role_code) {
+            $query->where('code', '=', $role_code);
+        });
+    }
+
+    public function scopeWithPermission($query, $permission_code)
+    {
+        return $this->whereHas('permissions', function ($query) use ($permission_code) {
+            $query->where('code', '=', $permission_code);
+        })->orWhereHas('roles', function ($query) use ($permission_code) {
+            $query->whereHas("permissions", function ($query) use ($permission_code) {
+                $query->where('code', '=', $permission_code);
+            });
+        });
+    }
 }

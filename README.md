@@ -40,3 +40,21 @@ LIBRE_DP_ADMIN_ID={{user_id}}
 LIBRE_DP_ADMIN_ID=1
 
 ```
+
+### Supported function
+
+```php
+
+//Check role of user
+$user->hasRole("role.code");
+
+//Check permission of user (include if user has role which has permission)
+$user->hasPermission("permission.code");
+
+//Query with role code
+User::withRole("role.code");
+
+//Query with permission code (include user who has role which has permission)
+User::withPermission("permission.code");
+
+```

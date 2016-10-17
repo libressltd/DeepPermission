@@ -33,7 +33,7 @@ active
                 	</div>
                 	@foreach ($group->permissions as $permission)
                 	<div class="col-lg-4">
-                		<input type="checkbox" value="{{ $permission->id }}"
+                		<input type="checkbox" value="{{ $permission->id }}" name="permission_id[]"
                 		<?php
                 			$user->loadAllPermissionAndRole();
                 			foreach ($user->__localPermissions as $rp)
@@ -45,7 +45,7 @@ active
 										echo "checked disabled ";
 									}
 									else {
-										echo " name=\"permission_id[]\" checked "; break;
+										echo "checked "; break;
 									}
 								}
 							}
