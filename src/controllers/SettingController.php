@@ -161,7 +161,7 @@ class SettingController extends Controller
         }
 
         $items = $items[2];
-        foreach ($pgs as $item)
+        foreach ($items as $item)
         {
             $object = new Role;
             $object->fill($item->toArray());
