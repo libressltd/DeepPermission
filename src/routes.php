@@ -2,6 +2,7 @@
 
 Route::group(['middleware' => 'web'], function () {
 	Route::get("permission/setting/initial", "libressltd\deeppermission\controllers\SettingController@getInitial");
+	Route::post("permission/setting/import", "libressltd\deeppermission\controllers\SettingController@postImport");
 	Route::get("permission/setting/export", "libressltd\deeppermission\controllers\SettingController@getExport");
 	Route::resource("permission/group", "libressltd\deeppermission\controllers\PermissionGroupController");
 	Route::resource("permission/setting", "libressltd\deeppermission\controllers\SettingController");

@@ -28,8 +28,17 @@ active
 				@endif
 				<p>Initital setup: Add all the Group &amp; Permission</p>
 				<a class="btn btn-primary" href="{{ url("permission/setting/initial") }}">Initital</a>
+				</br>
 				<p>Export</p>
 				<a class="btn btn-primary" href="{{ url("permission/setting/export") }}">Initital</a>
+				</br>
+
+				{!! Form::lbAlert() !!}
+				{!! Form::open(array("url" => "permission/setting/import", "method" => "post", "files" => true)) !!}
+				
+				{!! Form::file("import") !!}
+				{!! Form::lbSubmit() !!}
+				{!! Form::close() !!}
 			</div>
 		</div>
 	</div>
