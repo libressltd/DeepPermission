@@ -11,6 +11,7 @@ use App\Models\Permission;
 use App\Models\Role;
 use App\Models\Role_permission;
 use Excel;
+use Illuminate\Support\Facades\Input;
 
 class SettingController extends Controller
 {
@@ -136,13 +137,44 @@ class SettingController extends Controller
         })->export('xls');
     }
 
-    function postImport($request)
+    function postImport(Request $request)
     {
         $file = Input::file('import');
-        $filename = $this->doSomethingLikeUpload($file);
 
-        return Excel::load($filename, function($reader) {
-
+        $array = Excel::load($file, function($reader) {
         })->get();
+
+        $items = $array[0];
+        foreach ($items as $item)
+        {
+            $object = new Permission_group;
+            $object->fill($item->toArray());
+            $object->save();
+        }
+
+        $items = $array[1];
+        foreach ($items as $item)
+        {
+            $object = new Permission;
+            $object->fill($item->toArray());
+            $object->save();
+        }
+
+        $items = $items[2];
+        foreach ($pgs as $item)
+        {
+            $object = new Role;
+            $object->fill($item->toArray());
+            $object->save();
+        }
+
+        $items = $array[3];
+        foreach ($items as $item)
+        {
+            $object = new Role_permission;
+            $object->fill($item->toArray());
+            $object->save();
+        }
+        return redirect("role");
     }
 }
