@@ -6,8 +6,18 @@ composer require libressltd/deeppermission
 
 ### Step 2: Add service provider to config/app.php
 
+```php
+//Provider
+
 LIBRESSLtd\DeepPermission\DeepPermissionServiceProvider::class, 
 LIBRESSLtd\LBForm\LBFormServiceProvider::class,
+Maatwebsite\Excel\ExcelServiceProvider::class,
+
+//Fadecade
+
+'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+
+```
 
 ### Step 3: Publish vendor
 

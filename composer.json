@@ -4,7 +4,8 @@
     "type": "library",
     "require": {
         "acacha/admin-lte-template-laravel": "*",
-        "libressltd/lbform": "*"
+        "libressltd/lbform": "*",
+        "maatwebsite/excel": "~2.1.0"
     },
     "license": "MIT",
     "authors": [

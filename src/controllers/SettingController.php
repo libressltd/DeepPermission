@@ -114,4 +114,9 @@ class SettingController extends Controller
 		
 		return redirect(url("permission/setting"))->with('dp_announce', 'Database initial success');
 	}
+    
+    function getExport()
+    {
+
+    }
 }
