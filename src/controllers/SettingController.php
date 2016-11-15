@@ -148,7 +148,9 @@ class SettingController extends Controller
         foreach ($items as $item)
         {
             $object = new Permission_group;
-            $object->fill($item->toArray());
+            $object->id = $item->id;
+            $object->name = $item->name;
+            $object->code = $item->code;
             $object->save();
         }
 
@@ -156,15 +158,20 @@ class SettingController extends Controller
         foreach ($items as $item)
         {
             $object = new Permission;
-            $object->fill($item->toArray());
+            $object->id = $item->id;
+            $object->name = $item->name;
+            $object->code = $item->code;
+            $object->permission_group_id = $item->permission_group_id;
             $object->save();
         }
 
-        $items = $items[2];
+        $items = $array[2];
         foreach ($items as $item)
         {
             $object = new Role;
-            $object->fill($item->toArray());
+            $object->id = $item->id;
+            $object->name = $item->name;
+            $object->code = $item->code;
             $object->save();
         }
 
@@ -172,7 +179,9 @@ class SettingController extends Controller
         foreach ($items as $item)
         {
             $object = new Role_permission;
-            $object->fill($item->toArray());
+            $object->id = $item->id;
+            $object->permission_id = $item->permission_id;
+            $object->role_id = $item->role_idd;
             $object->save();
         }
         return redirect("role");
