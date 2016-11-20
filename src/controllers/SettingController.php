@@ -139,6 +139,9 @@ class SettingController extends Controller
 
     function postImport(Request $request)
     {
+        $this->validate($request, [
+            'import' => 'file|mimes:xls,xlsx',
+        ]);
         $file = Input::file('import');
 
         $array = Excel::load($file, function($reader) {
