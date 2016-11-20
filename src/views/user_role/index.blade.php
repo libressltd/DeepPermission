@@ -45,7 +45,7 @@ active
 	                <tbody>
 	                	@foreach (App\Models\User::with("roles")->get() as $user)
 		                <tr>
-		                	<td>{{ $user->id }}.</td>
+		                	<td>{{ $user->id }}. <input type="hidden" name="user_check_{{ $user->id}}" value="1" /></td>
 		                	<td>{{ $user->name }}</td>
 		                	<td>{{ $user->email }}</td>
 		                	

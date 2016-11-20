@@ -44,13 +44,20 @@ class UserRoleController extends Controller
     {
     	foreach (array_keys($_POST) as $key)
 		{
-			if (strpos($key, "user_") === 0)
+			if (strpos($key, "user_check_") === 0)
 			{
 				$component = explode("_", $key);
-				$user_id = $component[1];
+				$user_id = $component[2];
 				
 				$user = User::find($user_id);
-				$user->roles()->sync($_POST[$key]);
+                if (isset($_POST["user_$user->id"]))
+                {
+    				$user->roles()->sync($_POST["user_$user->id"]);
+                }
+                else
+                {
+                    $user->roles()->sync([]);
+                }
 			}
 		}
 		return redirect(url("user_role"))->with('dp_announce', 'User\'s role updated');
