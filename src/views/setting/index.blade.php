@@ -35,7 +35,6 @@ active
 				<a class="btn btn-primary" href="{{ url("permission/setting/export") }}"><i class="fa fa-download" aria-hidden="true"></i> Export</a>
 				</br>
 				{!! Form::open(array("url" => "permission/setting/import", "method" => "post", "files" => true)) !!}
-				
 				{!! Form::file("import") !!}
 				<button type="submit" class="btn btn-primary"><i class="fa fa-upload" aria-hidden="true"></i> Export</button>
 				{!! Form::close() !!}

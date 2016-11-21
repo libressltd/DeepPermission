@@ -140,7 +140,7 @@ class SettingController extends Controller
     function postImport(Request $request)
     {
         $this->validate($request, [
-            'import' => 'file|mimes:xls,xlsx',
+            'import' => 'file|mimetypes:application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-office',
         ]);
         $file = Input::file('import');
 
