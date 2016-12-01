@@ -20,9 +20,9 @@ active
 			<div class="box-header with-border">
 				<h3 class="box-title">
 					@if (!isset($role))
-					Add new Role
+					{{ trans('deeppermission.role.add') }}
 					@else
-					Edit Role: {{ $role->name }}
+					{{ trans('deeppermission.role.edit') }}: {{ $role->name }}
 					@endif
 				</h3>
 			</div>
@@ -34,8 +34,8 @@ active
 				{!! Form::open(array("url" => "role/$role->id", "method" => "put")) !!}
 				@endif
 				
-				{!! Form::lbText("name", @$role->name, "Name", "Role's name", null, config("deeppermission.CNF_REQUIRE_ANUM")) !!}
-				{!! Form::lbText("code", @$role->code, "Code", "Role's code", "For developer only", config("deeppermission.CNF_REQUIRE_ANUM_AND_POINT")) !!}
+				{!! Form::lbText("name", @$role->name, trans('deeppermission.role.name'), trans('deeppermission.role.name.hint'), null, config("deeppermission.CNF_REQUIRE_ANUM")) !!}
+				{!! Form::lbText("code", @$role->code, trans('deeppermission.role.code'), trans('deeppermission.role.code.hint'), trans('deeppermission.role.code.note'), config("deeppermission.CNF_REQUIRE_ANUM_AND_POINT")) !!}
 				{!! Form::lbSubmit() !!}
 				{!! Form::close() !!}
             </div>

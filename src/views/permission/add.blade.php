@@ -20,9 +20,10 @@ active
 			<div class="box-header with-border">
 				<h3 class="box-title">
 					@if (!isset($permission))
+					{{ trans('deeppermission.permission.add') }}
 					Add new Permission
 					@else
-					Edit Permission: {{ $permission->name }}
+					{{ trans('deeppermission.permission.edit') }}: {{ $permission->name }}
 					@endif
 				</h3>
 			</div>
@@ -34,9 +35,9 @@ active
 				{!! Form::open(array("url" => "permission/$permission->id", "method" => "put")) !!}
 				@endif
 				
-				{!! Form::lbText("name", @$permission->name, "Name", "Permission's name", null, config("deeppermission.CNF_REQUIRE_ANUM")) !!}
-				{!! Form::lbText("code", @$permission->code, "Code", "Permission's code", "For developer only", config("deeppermission.CNF_REQUIRE_ANUM_AND_POINT")) !!}
-				{!! Form::lbSelect2("permission_group_id", @$permission->permission_group_id, App\Models\Permission_group::all_to_option(), "Group permission") !!}
+				{!! Form::lbText("name", @$permission->name, trans('deeppermission.permission.name'), trans('deeppermission.permission.name.hint'), null, config("deeppermission.CNF_REQUIRE_ANUM")) !!}
+				{!! Form::lbText("code", @$permission->code, trans('deeppermission.permission.code'), trans('deeppermission.permission.code.hint'), trans('deeppermission.permission.code.note'), config("deeppermission.CNF_REQUIRE_ANUM_AND_POINT")) !!}
+				{!! Form::lbSelect2("permission_group_id", @$permission->permission_group_id, App\Models\Permission_group::all_to_option(), trans('deeppermission.permission.group_permission')) !!}
 				{!! Form::lbSubmit() !!}
 				{!! Form::close() !!}
             </div>

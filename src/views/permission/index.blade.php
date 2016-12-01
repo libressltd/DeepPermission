@@ -18,7 +18,7 @@ active
 	<div class="col-md-6">
 		<div class="box box-solid">
 			<div class="box-header with-border">
-				<h3 class="box-title">Permission Management</h3>
+				<h3 class="box-title">{{ trans('deeppermission.permission.title') }}</h3>
 			</div>
 			<div class="box-body">
 				@if (session('dp_announce'))
@@ -30,10 +30,10 @@ active
 					<thead>
 		                <tr>
 		                	<th>#</th>
-		                	<th>Permission</th>
-		                	<th>Code</th>
-		                	<th>Group</th>
-		                	<th>Action</th>
+		                	<th>{{ trans('deeppermission.permission.name') }}</th>
+		                	<th>{{ trans('deeppermission.permission.code') }}</th>
+		                	<th>{{ trans('deeppermission.permission.group_permission') }}</th>
+		                	<th>{{ trans('deeppermission.general.action') }}</th>
 		                </tr>
 	                </thead>
 	                <tbody>
@@ -53,7 +53,7 @@ active
 		                		@if (Auth::user()->hasPermission("permission.delete"))
 		                		{!! Form::lbButton("/permission/$permission->id", "delete", "<i class=\"fa fa-trash\"></i>", array(
 		                			"class" => "btn btn-sm btn-danger",
-		                			"onclick" => "return confirm(\"Are you sure?\")"
+		                			"onclick" => "return confirm(\"".trans('deeppermission.general.are_you_sure')."\")"
 		                		)) !!}
 		                		@endif
 		                	</td>
@@ -65,7 +65,7 @@ active
             </div>
             @if (Auth::user()->hasPermission("permission.add"))
             <div class="box-footer">
-            	<a href="{{ url("permission/create") }}" class="btn btn-primary">Add new Permission</a>
+            	<a href="{{ url("permission/create") }}" class="btn btn-primary">{{ trans('deeppermission.permission.add') }}</a>
             </div>
             @endif
 		</div>
@@ -74,14 +74,14 @@ active
 	<div class="col-md-3">
 		<div class="box box-solid">
 			<div class="box-header with-border">
-				<h3 class="box-title">Quick add</h3>
+				<h3 class="box-title">{{ trans('deeppermission.general.quickadd') }}</h3>
 			</div>
 			<div class="box-body">
 				{!! Form::lbAlert() !!}
 				{!! Form::open(array("url" => "permission", "method" => "post")) !!}
-				{!! Form::lbText("name", "", "Name", "Permission's name", null, config("deeppermission.CNF_REQUIRE_ANUM")) !!}
-				{!! Form::lbText("code", "", "Code", "Permission's code", "For developer only", config("deeppermission.CNF_REQUIRE_ANUM_AND_POINT")) !!}
-				{!! Form::lbSelect2("permission_group_id", "0", App\Models\Permission_group::all_to_option(), "Group permission") !!}
+				{!! Form::lbText("name", "", trans('deeppermission.permission.name'), trans('deeppermission.permission.name.hint'), null, config("deeppermission.CNF_REQUIRE_ANUM")) !!}
+				{!! Form::lbText("code", "", trans('deeppermission.permission.code'), trans('deeppermission.permission.code.hint'), trans('deeppermission.permission.code'), config("deeppermission.CNF_REQUIRE_ANUM_AND_POINT")) !!}
+				{!! Form::lbSelect2("permission_group_id", "0", App\Models\Permission_group::all_to_option(), trans('deeppermission.permission.group_permission')) !!}
 				{!! Form::lbSubmit() !!}
 				{!! Form::close() !!}
             </div>

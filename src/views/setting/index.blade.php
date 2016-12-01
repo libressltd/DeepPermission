@@ -18,7 +18,7 @@ active
 	<div class="col-md-6">
 		<div class="box box-solid">
 			<div class="box-header with-border">
-				<h3 class="box-title">Setting</h3>
+				<h3 class="box-title">{{ trans('deeppermission.setting.title') }}</h3>
 			</div>
 			<div class="box-body">
 				{!! Form::lbAlert() !!}
@@ -28,15 +28,15 @@ active
 					<p>{{ session('dp_announce') }}</p>
 				</div>
 				@endif
-				<p>Initital setup: Add all the Group &amp; Permission</p>
-				<a class="btn btn-primary" href="{{ url("permission/setting/initial") }}">Initital</a>
+				<p>{{ trans('deeppermission.setting.initial_text') }}</p>
+				<a class="btn btn-primary" href="{{ url("permission/setting/initial") }}">{{ trans('deeppermission.setting.initial') }}</a>
 				</br>
 				<p>Export</p>
-				<a class="btn btn-primary" href="{{ url("permission/setting/export") }}"><i class="fa fa-download" aria-hidden="true"></i> Export</a>
+				<a class="btn btn-primary" href="{{ url("permission/setting/export") }}"><i class="fa fa-download" aria-hidden="true"></i> {{ trans('deeppermission.setting.export') }}</a>
 				</br>
 				{!! Form::open(array("url" => "permission/setting/import", "method" => "post", "files" => true)) !!}
 				{!! Form::file("import") !!}
-				<button type="submit" class="btn btn-primary"><i class="fa fa-upload" aria-hidden="true"></i> Import</button>
+				<button type="submit" class="btn btn-primary"><i class="fa fa-upload" aria-hidden="true"></i> {{ trans('deeppermission.setting.import') }}</button>
 				{!! Form::close() !!}
 			</div>
 		</div>

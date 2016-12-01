@@ -18,7 +18,7 @@ active
 	<div class="col-md-9">
 		<div class="box box-solid">
 			<div class="box-header with-border">
-				<h3 class="box-title">User's Role</h3>
+				<h3 class="box-title">{{ trans('deeppermission.user.role') }}</h3>
 			</div>
 			<?php
 				$roles = App\Models\Role::all();
@@ -35,12 +35,12 @@ active
 					<thead>
 		                <tr>
 		                	<th>#</th>
-		                	<th>User</th>
-		                	<th>Email</th>
+		                	<th>{{ trans('deeppermission.user.username') }}</th>
+		                	<th>{{ trans('deeppermission.user.email') }}</th>
 		                	@foreach ($roles as $role)
 		                	<th><center>{{ $role->name }}</center></th>
 		                	@endforeach
-		                	<th>Action</th>
+		                	<th>{{ trans('deeppermission.general.action') }}</th>
 		                </tr>
 	                </thead>
 	                <tbody>

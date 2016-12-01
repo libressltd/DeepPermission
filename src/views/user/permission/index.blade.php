@@ -18,7 +18,7 @@ active
 	<div class="col-md-9">
 		<div class="box box-solid">
 			<div class="box-header with-border">
-				<h3 class="box-title">{{ $user->name }}'s Permission</h3>
+				<h3 class="box-title">{{ $user->name }}{{ trans('deeppermission.user.permission_of') }}</h3>
 			</div>
 			{!! Form::open(array("url" => "/user/$user->id/permission", "method" => "post")) !!}
 			<div class="box-body">

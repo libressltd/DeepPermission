@@ -18,7 +18,7 @@ active
 	<div class="col-md-6">
 		<div class="box box-solid">
 			<div class="box-header with-border">
-				<h3 class="box-title">Role Management</h3>
+				<h3 class="box-title">{{ trans('deeppermission.role.title') }}</h3>
 			</div>
 			<div class="box-body">
 				@if (session('dp_announce'))
@@ -30,9 +30,9 @@ active
 					<thead>
 		                <tr>
 		                	<th>#</th>
-		                	<th>Role</th>
-		                	<th>Code</th>
-		                	<th>Action</th>
+		                	<th>{{ trans('deeppermission.role.name') }}</th>
+		                	<th>{{ trans('deeppermission.role.code') }}</th>
+		                	<th>{{ trans('deeppermission.general.action') }}</th>
 		                </tr>
 	                </thead>
 	                <tbody>
@@ -53,7 +53,7 @@ active
 		                		@if (Auth::user()->hasPermission("role.delete"))
 		                		{!! Form::lbButton("/role/$role->id", "delete", "<i class=\"fa fa-trash\"></i>", array(
 		                			"class" => "btn btn-sm btn-danger",
-		                			"onclick" => "return confirm(\"Are you sure?\")"
+		                			"onclick" => "return confirm(\"".trans('deeppermission.general.are_you_sure')."\")"
 		                		)) !!}
 		                		@endif
 		                	</td>
@@ -65,7 +65,7 @@ active
 			</div>
 			@if (Auth::user()->hasPermission("role.add"))
             <div class="box-footer">
-            	<a href="{{ url("role/create") }}" class="btn btn-primary">Add new Role</a>
+            	<a href="{{ url("role/create") }}" class="btn btn-primary">{{ trans('deeppermission.role.add') }}</a>
             </div>
             @endif
 		</div>
@@ -74,13 +74,13 @@ active
 	<div class="col-md-3">
 		<div class="box box-solid">
 			<div class="box-header with-border">
-				<h3 class="box-title">Quick Add</h3>
+				<h3 class="box-title">{{ trans('deeppermission.general.quickadd') }}</h3>
 			</div>
 			<div class="box-body">
 				{!! Form::lbAlert() !!}
 				{!! Form::open(array("url" => "role", "method" => "post")) !!}
-				{!! Form::lbText("name", "", "Name", "Role's name", null, config("deeppermission.CNF_REQUIRE_ANUM")) !!}
-				{!! Form::lbText("code", "", "Code", "Role's code", "For developer only", config("deeppermission.CNF_REQUIRE_ANUM_AND_POINT")) !!}
+				{!! Form::lbText("name", "", trans('deeppermission.role.name'), trans('deeppermission.role.name.hint'), null, config("deeppermission.CNF_REQUIRE_ANUM")) !!}
+				{!! Form::lbText("code", "", trans('deeppermission.role.code'), trans('deeppermission.role.code.hint'), trans('deeppermission.role.code.note'), config("deeppermission.CNF_REQUIRE_ANUM_AND_POINT")) !!}
 				{!! Form::lbSubmit() !!}
 				{!! Form::close() !!}
             </div>

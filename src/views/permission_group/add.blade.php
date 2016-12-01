@@ -20,9 +20,9 @@ active
 			<div class="box-header with-border">
 				<h3 class="box-title">
 					@if (!isset($group))
-					Add new Group
+					{{ trans('deeppermission.group.add') }}
 					@else
-					Edit Group: {{ $group->name }}
+					{{ trans('deeppermission.group.edit') }}: {{ $group->name }}
 					@endif
 				</h3>
 			</div>
@@ -34,8 +34,8 @@ active
 				{!! Form::open(array("url" => "permission/group/$group->id", "method" => "put")) !!}
 				@endif
 				
-				{!! Form::lbText("name", @$group->name, "Name", "Group's name", null, config("deeppermission.CNF_REQUIRE_ANUM")) !!}
-				{!! Form::lbText("code", @$group->code, "Code", "Group's code", "For developer only", config("deeppermission.CNF_REQUIRE_ANUM_AND_POINT")) !!}
+				{!! Form::lbText("name", @$group->name, trans('deeppermission.group.name'), trans('deeppermission.group.name.hint'), null, config("deeppermission.CNF_REQUIRE_ANUM")) !!}
+				{!! Form::lbText("code", @$group->code, trans('deeppermission.group.code'), trans('deeppermission.group.code.hint'), trans('deeppermission.group.code.note'), config("deeppermission.CNF_REQUIRE_ANUM_AND_POINT")) !!}
 				{!! Form::lbSubmit() !!}
 				{!! Form::close() !!}
             </div>
