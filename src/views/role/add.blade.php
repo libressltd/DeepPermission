@@ -34,8 +34,8 @@ active
 				{!! Form::open(array("url" => "role/$role->id", "method" => "put")) !!}
 				@endif
 				
-				{!! Form::lbText("name", @$role->name, trans('deeppermission.role.name'), trans('deeppermission.role.name.hint'), null, config("deeppermission.CNF_REQUIRE_ANUM")) !!}
-				{!! Form::lbText("code", @$role->code, trans('deeppermission.role.code'), trans('deeppermission.role.code.hint'), trans('deeppermission.role.code.note'), config("deeppermission.CNF_REQUIRE_ANUM_AND_POINT")) !!}
+				{!! Form::lbText("name", @$role->name, trans('deeppermission.role.name'), trans('deeppermission.role.name_hint'), null, config("deeppermission.CNF_REQUIRE_ANUM")) !!}
+				{!! Form::lbText("code", @$role->code, trans('deeppermission.role.code'), trans('deeppermission.role.code_hint'), trans('deeppermission.role.code_note'), config("deeppermission.CNF_REQUIRE_ANUM_AND_POINT")) !!}
 				{!! Form::lbSubmit() !!}
 				{!! Form::close() !!}
             </div>

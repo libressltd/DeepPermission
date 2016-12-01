@@ -88,8 +88,8 @@ active
 			<div class="box-body">
 				{!! Form::lbAlert() !!}
 				{!! Form::open(array("url" => "permission/group", "method" => "post")) !!}
-				{!! Form::lbText("name", "", trans('deeppermission.group.name'), trans('deeppermission.group.name.hint'), null, config("lbform.CNF_REQUIRE_ANUM")) !!}
-				{!! Form::lbText("code", "", trans('deeppermission.group.code'), trans('deeppermission.group.code.hint'), trans('deeppermission.group.code.note'), config("lbform.CNF_REQUIRE_ANUM_AND_POINT")) !!}
+				{!! Form::lbText("name", "", trans('deeppermission.group.name'), trans('deeppermission.group.name_hint'), null, config("lbform.CNF_REQUIRE_ANUM")) !!}
+				{!! Form::lbText("code", "", trans('deeppermission.group.code'), trans('deeppermission.group.code_hint'), trans('deeppermission.group.code_note'), config("lbform.CNF_REQUIRE_ANUM_AND_POINT")) !!}
 				{!! Form::lbSubmit() !!}
 				{!! Form::close() !!}
             </div>

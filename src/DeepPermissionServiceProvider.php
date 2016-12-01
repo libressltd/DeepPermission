@@ -21,7 +21,7 @@ class DeepPermissionServiceProvider extends ServiceProvider
 	        __DIR__.'/models' => base_path('app/Models'),
 	        __DIR__.'/requests' => base_path('app/Http/Requests/DeepPermission'),
             __DIR__.'/config' => base_path('config'),
-            __DIR__.'/lang' => base_path('resource/lang'),
+            __DIR__.'/lang/en/deeppermission.php' => base_path('resources/lang/en/deeppermission.php'),
 	    ], 'deeppermission');
     }
 

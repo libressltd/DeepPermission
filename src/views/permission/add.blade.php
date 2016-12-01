@@ -35,8 +35,8 @@ active
 				{!! Form::open(array("url" => "permission/$permission->id", "method" => "put")) !!}
 				@endif
 				
-				{!! Form::lbText("name", @$permission->name, trans('deeppermission.permission.name'), trans('deeppermission.permission.name.hint'), null, config("deeppermission.CNF_REQUIRE_ANUM")) !!}
-				{!! Form::lbText("code", @$permission->code, trans('deeppermission.permission.code'), trans('deeppermission.permission.code.hint'), trans('deeppermission.permission.code.note'), config("deeppermission.CNF_REQUIRE_ANUM_AND_POINT")) !!}
+				{!! Form::lbText("name", @$permission->name, trans('deeppermission.permission.name'), trans('deeppermission.permission.name_hint'), null, config("deeppermission.CNF_REQUIRE_ANUM")) !!}
+				{!! Form::lbText("code", @$permission->code, trans('deeppermission.permission.code'), trans('deeppermission.permission.code_hint'), trans('deeppermission.permission.code_note'), config("deeppermission.CNF_REQUIRE_ANUM_AND_POINT")) !!}
 				{!! Form::lbSelect2("permission_group_id", @$permission->permission_group_id, App\Models\Permission_group::all_to_option(), trans('deeppermission.permission.group_permission')) !!}
 				{!! Form::lbSubmit() !!}
 				{!! Form::close() !!}

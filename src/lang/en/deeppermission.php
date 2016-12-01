@@ -54,17 +54,13 @@ return array (
   array (
     'add' => 'Add new Permission',
     'edit' => 'Edit Permission',
-    'name' => 
-    array (
-      'hint' => 'Permission\'s name',
-    ),
-    'code' => 
-    array (
-      'hint' => 'Permission\'s code',
-      'note' => 'For developer only',
-    ),
+    'name' => 'Name',
+    'code' => 'Code',
     'group_permission' => 'Permission Group',
     'title' => 'Permission management',
+    'name_hint' => 'Permission\'s name',
+    'code_hint' => 'Permission\'s code',
+    'code_note' => 'For developer only',
   ),
   'general' => 
   array (
@@ -76,33 +72,25 @@ return array (
   array (
     'add' => 'Add new Permission Group',
     'edit' => 'Edit Permission Group',
-    'name' => 
-    array (
-      'hint' => 'Permission Group\'s name',
-    ),
-    'code' => 
-    array (
-      'hint' => 'Permission Group\'s code',
-      'note' => 'For developer only',
-    ),
+    'name' => 'Name',
+    'code' => 'Code',
     'title' => 'Permission Group management',
     'permission' => 'Permission',
+    'name_hint' => 'Permission Group\'s name',
+    'code_hint' => 'Permission Group\'s code',
+    'code_note' => 'For developer only',
   ),
   'role' => 
   array (
     'add' => 'Add new Role',
     'edit' => 'Edit Role',
-    'name' => 
-    array (
-      'hint' => 'Role\'s name',
-    ),
-    'code' => 
-    array (
-      'hint' => 'Role\'s code',
-      'note' => 'For developer only',
-    ),
+    'name' => 'Name',
+    'code' => 'Code',
     'title' => 'Role management',
     'permission_of' => '\'s Roles',
+    'name_hint' => 'Role\'s name',
+    'code_hint' => 'Role\'s code',
+    'code_note' => 'For developer only',
   ),
   'setting' => 
   array (
