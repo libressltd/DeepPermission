@@ -36,7 +36,7 @@ active
 				</br>
 				{!! Form::open(array("url" => "permission/setting/import", "method" => "post", "files" => true)) !!}
 				{!! Form::file("import") !!}
-				<button type="submit" class="btn btn-primary"><i class="fa fa-upload" aria-hidden="true"></i> Export</button>
+				<button type="submit" class="btn btn-primary"><i class="fa fa-upload" aria-hidden="true"></i> Import</button>
 				{!! Form::close() !!}
 			</div>
 		</div>
