@@ -22,6 +22,7 @@ active
 			</div>
 			<?php
 				$roles = App\Models\Role::all();
+				$users = App\Models\User::with("roles")->paginate(30);
 			?>
 			{!! Form::open(array("url" => "user_role", "method" => "post")) !!}
 			<div class="box-body">
@@ -43,7 +44,7 @@ active
 		                </tr>
 	                </thead>
 	                <tbody>
-	                	@foreach (App\Models\User::with("roles")->get() as $user)
+	                	@foreach ($users as $user)
 		                <tr>
 		                	<td>{{ $user->id }}. <input type="hidden" name="user_check_{{ $user->id}}" value="1" /></td>
 		                	<td>{{ $user->name }}</td>
@@ -73,6 +74,7 @@ active
 		                @endforeach
 	                </tbody>
                 </table>
+                {{ $users->links() }}
             </div>
             <div class="box-footer">
             	{!! Form::lbSubmit() !!}

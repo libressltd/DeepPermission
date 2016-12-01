@@ -37,7 +37,10 @@ active
 		                </tr>
 	                </thead>
 	                <tbody>
-	                	@foreach (App\Models\Permission_group::with("permissions")->get() as $group)
+	                <?php
+	                	$groups = App\Models\Permission_group::with("permissions")->paginate(30);
+	                ?>
+	                	@foreach ($groups as $group)
 		                <tr>
 		                	<td>{{ $group->id }}.</td>
 		                	<td>{{ $group->name }}</td>
@@ -66,6 +69,7 @@ active
 		                </tr>
 		                @endforeach
 	                </tbody>
+	                {{ $groups->links() }}
                 </table>
             </div>
             @if (Auth::user()->hasPermission("permission_group.add"))

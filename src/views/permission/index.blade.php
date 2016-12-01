@@ -37,7 +37,10 @@ active
 		                </tr>
 	                </thead>
 	                <tbody>
-	                	@foreach (App\Models\Permission::all() as $permission)
+	                <?php
+	                	$permissions = App\Models\Permission::paginate(30);
+	                ?>
+	                	@foreach ($permissions as $permission)
 		                <tr>
 		                	<td>{{ $permission->id }}.</td>
 		                	<td>{{ $permission->name }}</td>
@@ -58,6 +61,7 @@ active
 		                @endforeach
 	                </tbody>
                 </table>
+                {{ $permissions->links() }}
             </div>
             @if (Auth::user()->hasPermission("permission.add"))
             <div class="box-footer">

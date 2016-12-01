@@ -36,7 +36,10 @@ active
 		                </tr>
 	                </thead>
 	                <tbody>
-	                	@foreach (App\Models\Role::all() as $role)
+	                <?php
+	                	$roles = App\Models\Role::paginate(30);
+	                ?>
+	                	@foreach ($roles as $role)
 		                <tr>
 		                	<td>{{ $role->id }}.</td>
 		                	<td>{{ $role->name }}</td>
@@ -58,6 +61,7 @@ active
 		                @endforeach
 					</tbody>
 				</table>
+				{{ $roles->links() }}
 			</div>
 			@if (Auth::user()->hasPermission("role.add"))
             <div class="box-footer">
