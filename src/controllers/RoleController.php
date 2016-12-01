@@ -54,7 +54,7 @@ class RoleController extends Controller
 		$role->code = $request->code;
 		$role->save();
 		
-		return redirect(url("role"))->with('dp_announce', 'Role created');
+		return redirect(url("role"))->with('dp_announce', trans('deeppermission.alert.role.created'));
     }
 
     /**
@@ -94,7 +94,7 @@ class RoleController extends Controller
 		$role->code = $request->code;
 		$role->save();
 		
-		return redirect(url("role"))->with('dp_announce', 'Role updated');
+		return redirect(url("role"))->with('dp_announce', trans('deeppermission.alert.role.updated'));
     }
 
     /**
@@ -108,6 +108,6 @@ class RoleController extends Controller
     	$role = Role::findOrFail($id);
 		$role->delete();
 		
-		return redirect(url("role"))->with('dp_announce', 'Role deleted');
+		return redirect(url("role"))->with('dp_announce', trans('deeppermission.alert.role.deleted'));
     }
 }

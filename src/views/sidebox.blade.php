@@ -8,35 +8,35 @@
 				@if (Auth::user()->hasPermission("user_role.view"))
 				<li class="@yield('sidebox_user_role')">
 					<a href="{{ url("user_role") }}">
-						User's Role
+						{{ trans('deeppermission.sidebox.user_role') }}
 					</a>
 				</li>
 				@endif
 				@if (Auth::user()->hasPermission("role.view"))
 				<li class="@yield('sidebox_role')">
 					<a href="{{ url("role") }}">
-						Role
+						{{ trans('deeppermission.sidebox.role') }}
 					</a>
 				</li>
 				@endif
 				@if (Auth::user()->hasPermission("permission_group.view"))
 				<li class="@yield('sidebox_permission_group')">
 					<a href="{{ url("permission/group") }}">
-						Group Permission
+						{{ trans('deeppermission.sidebox.group') }}
 					</a>
 				</li>
 				@endif
 				@if (Auth::user()->hasPermission("permission.view"))
 				<li class="@yield('sidebox_permission')">
 					<a href="{{ url("permission") }}">
-						Permission
+						{{ trans('deeppermission.sidebox.permission') }}
 					</a>
 				</li>
 				@endif
 				@if (Auth::user()->hasPermission("permission.setting"))
 				<li class="@yield('sidebox_setting')">
 					<a href="{{ url("permission/setting") }}">
-						Setting
+						{{ trans('deeppermission.sidebox.setting') }}
 					</a>
 				</li>
 				@endif

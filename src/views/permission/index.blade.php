@@ -1,7 +1,7 @@
 @extends('dp::app')
 
 @section ('contentheader_title')
-Role &amp; Permission Management
+{{ trans('deeppermission.header.title') }}
 @endsection
 
 @section ('sidebox_permission')

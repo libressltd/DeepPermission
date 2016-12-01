@@ -54,7 +54,7 @@ class RolePermissionController extends Controller
 		}
 		$role->save();
 		
-		return redirect(url("/role/$role_id/permission"))->with('dp_announce', 'Role\'s permission udpated');
+		return redirect(url("/role/$role_id/permission"))->with('dp_announce', trans('deeppermission.alert.role_permission.updated'));
     }
 
     /**

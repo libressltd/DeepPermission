@@ -60,7 +60,7 @@ class UserRoleController extends Controller
                 }
 			}
 		}
-		return redirect(url("user_role"))->with('dp_announce', 'User\'s role updated');
+		return redirect(url("user_role"))->with('dp_announce', trans('deeppermission.alert.user_role.updated'));
     }
 
     /**

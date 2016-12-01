@@ -55,7 +55,7 @@ class UserPermissionController extends Controller
 		}
 		$user->save();
 		
-		return redirect(url("/user/$user_id/permission"))->with('dp_announce', 'User\'s permission updated');
+		return redirect(url("/user/$user_id/permission"))->with('dp_announce', trans('deeppermission.alert.user_permission.updated'));
     }
 
     /**
