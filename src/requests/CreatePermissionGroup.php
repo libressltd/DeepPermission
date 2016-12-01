@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests\DeepPermission;
 
-use App\Http\Requests\Request;
+use Illuminate\Foundation\Http\FormRequest;
 
-class CreatePermissionGroup extends Request
+class CreatePermissionGroup extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,20 +23,20 @@ class CreatePermissionGroup extends Request
      */
     public function rules()
     {
-    	switch($this->method())
-		{
-			case 'POST':
-		        return array(
-		            'name' => 'required|unique:permission_groups,name',
-		        	'code' => 'required|unique:permission_groups,code',
-		        );
-				
-			case 'PUT':
-				return array(
-		            'name' => 'required|unique:permission_groups,name,'.$this->group,
-		        	'code' => 'required|unique:permission_groups,code,'.$this->group,
-		        );
-			default: return array();
-		}
+        switch($this->method())
+        {
+            case 'POST':
+                return array(
+                    'name' => 'required|unique:permission_groups,name',
+                    'code' => 'required|unique:permission_groups,code',
+                );
+                
+            case 'PUT':
+                return array(
+                    'name' => 'required|unique:permission_groups,name,'.$this->group,
+                    'code' => 'required|unique:permission_groups,code,'.$this->group,
+                );
+            default: return array();
+        }
     }
 }
