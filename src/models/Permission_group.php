@@ -33,5 +33,6 @@ class Permission_group extends Model
 		$group = Permission_group::firstOrNew(array("code" => $group_code));
 		$group->name = $group_name;
 		$group->save();
+		return $group;
 	}
 }

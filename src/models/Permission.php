@@ -30,6 +30,10 @@ class Permission extends Model
 		$group_code = $permission_component[0];
 		
 		$group = Permission_group::where("code", $group_code)->first();
+		if (!$group)
+		{
+			$group = Permission_group::addIfNotExist($group_code, $group_code);
+		}
 		if ($group)
 		{
 			$permission = Permission::firstOrNew(array("code" => $permission_code));
