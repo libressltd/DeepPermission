@@ -123,16 +123,16 @@ class SettingController extends Controller
     {
         Excel::create('DeepPermissionExport', function($excel) {
             $excel->sheet('Permission_group', function($sheet) {
-                $sheet->loadView('dp:export.group');
+                $sheet->loadView('dp::export.group');
             });
             $excel->sheet('Permission', function($sheet) {
-                $sheet->loadView('dp:export.permission');
+                $sheet->loadView('dp::export.permission');
             });
             $excel->sheet('Role', function($sheet) {
-                $sheet->loadView('dp:export.role');
+                $sheet->loadView('dp::export.role');
             });
             $excel->sheet('Role_permission', function($sheet) {
-                $sheet->loadView('dp:export.role_permission');
+                $sheet->loadView('dp::export.role_permission');
             });
         })->export('xls');
     }
@@ -150,32 +150,19 @@ class SettingController extends Controller
         $items = $array[0];
         foreach ($items as $item)
         {
-            $object = new Permission_group;
-            $object->id = $item->id;
-            $object->name = $item->name;
-            $object->code = $item->code;
-            $object->save();
+            Permission_group::addIfNotExist($item->name, $item->code);
         }
 
         $items = $array[1];
         foreach ($items as $item)
         {
-            $object = new Permission;
-            $object->id = $item->id;
-            $object->name = $item->name;
-            $object->code = $item->code;
-            $object->permission_group_id = $item->permission_group_id;
-            $object->save();
+            Permission::addIfNotExist($item->name, $item->code);
         }
 
         $items = $array[2];
         foreach ($items as $item)
         {
-            $object = new Role;
-            $object->id = $item->id;
-            $object->name = $item->name;
-            $object->code = $item->code;
-            $object->save();
+            Role::addIfNotExist($item->name, $item->code);
         }
 
         $items = $array[3];

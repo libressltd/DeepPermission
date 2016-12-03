@@ -15,4 +15,11 @@ class Role_permission extends Model
     {
         return $this->belongsTo('App\Models\Permission', "permission_id");
     }
+	
+	static public function addIfNotExist($role_name, $role_code)
+	{
+		$group = Role::firstOrNew(array("code" => $role_code));
+		$group->name = $role_name;
+		$group->save();
+	}
 }
