@@ -123,16 +123,16 @@ class SettingController extends Controller
     {
         Excel::create('DeepPermissionExport', function($excel) {
             $excel->sheet('Permission_group', function($sheet) {
-                $sheet->fromModel(Permission_group::get(), null, "A1", false, false);
+                $sheet->loadView('dp:export.group');
             });
             $excel->sheet('Permission', function($sheet) {
-                $sheet->fromModel(Permission::get(), null, "A1", false, false);
+                $sheet->loadView('dp:export.permission');
             });
             $excel->sheet('Role', function($sheet) {
-                $sheet->fromModel(Role::get(), null, "A1", false, false);
+                $sheet->loadView('dp:export.role');
             });
             $excel->sheet('Role_permission', function($sheet) {
-                $sheet->fromModel(Role_permission::get(), null, "A1", false, false);
+                $sheet->loadView('dp:export.role_permission');
             });
         })->export('xls');
     }
