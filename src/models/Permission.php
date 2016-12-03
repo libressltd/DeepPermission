@@ -34,12 +34,12 @@ class Permission extends Model
 		{
 			$group = Permission_group::addIfNotExist($group_code, $group_code);
 		}
-		if ($group)
-		{
-			$permission = Permission::firstOrNew(array("code" => $permission_code));
-			$permission->name = $permission_name;
-			$permission->permission_group_id = $group->id;
-			$permission->save();
-		}
+		
+		$permission = Permission::firstOrNew(array("code" => $permission_code));
+		$permission->name = $permission_name;
+		$permission->permission_group_id = $group->id;
+		$permission->save();
+
+		return $permission;
 	}
 }

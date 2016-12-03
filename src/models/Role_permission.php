@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Model\Role;
+use App\Model\Permission;
 
 class Role_permission extends Model
 {
@@ -16,10 +18,28 @@ class Role_permission extends Model
         return $this->belongsTo('App\Models\Permission', "permission_id");
     }
 	
-	static public function addIfNotExist($role_name, $role_code)
+	static public function addIfNotExist($role_code, $permission_code)
 	{
-		$group = Role::firstOrNew(array("code" => $role_code));
-		$group->name = $role_name;
-		$group->save();
+        $role = Role::where("code", $role_code);
+        if (!$role)
+        {
+            $role = Role::addIfNotExist($role_code, $role_code);
+        }
+
+        $permission = Permission::where("code", $permission_code);
+        if (!$permission)
+        {
+            $permission = Permission::addIfNotExist($permission_code, $permission_code);
+        }
+
+        $rp = Role_permission::where("role_id", $role->id)->where("permission_id", $permission->id);
+        if (!$rp)
+        {
+            $rp = new Role_permission;
+            $rp->role_id = $role->id;
+            $rp->permission_id = $permission->id;
+            $rp->save();
+        }
+        return $rp;
 	}
 }

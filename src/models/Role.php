@@ -21,5 +21,6 @@ class Role extends Model
 		$group = Role::firstOrNew(array("code" => $role_code));
 		$group->name = $role_name;
 		$group->save();
+		return $group;
 	}
 }
