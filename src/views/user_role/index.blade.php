@@ -25,13 +25,13 @@ active
 				$users = App\Models\User::with("roles")->paginate(30);
 			?>
 			{!! Form::open(array("url" => "user_role", "method" => "post")) !!}
-			<div class="box-body">
+			<div class="box-body" style="overflow-x: auto;">
 				@if (session('dp_announce'))
 				<div class="callout callout-success">
 					<p>{{ session('dp_announce') }}</p>
 				</div>
 				@endif
-				<table class="table table-bordered table-hover" style="overflow-x: auto;">
+				<table class="table table-bordered table-hover">
 					<thead>
 		                <tr>
 		                	<th>#</th>
