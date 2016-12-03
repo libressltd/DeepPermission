@@ -32,7 +32,7 @@ class Role_permission extends Model
             $permission = Permission::addIfNotExist($permission_code, $permission_code);
         }
 
-        $rp = Role_permission::where("role_id", $role->id)->where("permission_id", $permission->id);
+        $rp = Role_permission::where("role_id", $role->id)->where("permission_id", $permission->id)->first();
         if (!$rp)
         {
             $rp = new Role_permission;
