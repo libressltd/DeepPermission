@@ -31,7 +31,7 @@ active
 					<p>{{ session('dp_announce') }}</p>
 				</div>
 				@endif
-				<table class="table table-bordered table-hover table-datatable" style="overflow-x: auto;">
+				<table class="table table-bordered table-hover" style="overflow-x: auto;">
 					<thead>
 		                <tr>
 		                	<th>#</th>
