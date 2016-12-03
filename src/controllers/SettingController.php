@@ -168,11 +168,7 @@ class SettingController extends Controller
         $items = $array[3];
         foreach ($items as $item)
         {
-            $object = new Role_permission;
-            $object->id = $item->id;
-            $object->permission_id = $item->permission_id;
-            $object->role_id = $item->role_idd;
-            $object->save();
+            Role_permission::addIfNotExist($item->role, $item->permission);
         }
         return redirect("role");
     }
