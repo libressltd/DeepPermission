@@ -20,13 +20,13 @@ active
 			<div class="box-header with-border">
 				<h3 class="box-title">{{ trans('deeppermission.role.title') }}</h3>
 			</div>
-			<div class="box-body">
+			<div class="box-body" style="overflow-x: auto;">
 				@if (session('dp_announce'))
 				<div class="callout callout-success">
 					<p>{{ session('dp_announce') }}</p>
 				</div>
 				@endif
-				<table class="table table-bordered table-hover table-datatable" style="overflow-x: auto;">
+				<table class="table table-bordered table-hover">
 					<thead>
 		                <tr>
 		                	<th>#</th>
