@@ -14,7 +14,7 @@ active
 
 @section('main-content')
 <div class="row">
-	@include("dp::sidebox")
+	@include("libressltd.deeppermission.sidebox")
 	<div class="col-md-9">
 		<div class="box box-solid">
 			<div class="box-header with-border">
