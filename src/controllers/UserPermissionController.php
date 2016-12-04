@@ -22,7 +22,7 @@ class UserPermissionController extends Controller
     public function index($user_id)
     {
         $user = User::findOrFail($user_id);
-		return view("dp::user.permission.index", array("user" => $user));
+		return view("libressltd.deeppermission.user.permission.index", array("user" => $user));
     }
 
     /**

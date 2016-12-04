@@ -24,7 +24,7 @@ class RoleController extends Controller
      */
     public function index()
     {
-        return view("dp::role.index");
+        return view("libressltd.deeppermission.role.index");
     }
 
     /**
@@ -34,7 +34,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        return view("dp::role.add");
+        return view("libressltd.deeppermission.role.add");
     }
 
     /**
@@ -77,7 +77,7 @@ class RoleController extends Controller
     public function edit($id)
     {
     	$role = Role::findOrFail($id);
-        return view("dp::role.add", array("role" => $role));
+        return view("libressltd.deeppermission.role.add", array("role" => $role));
     }
 
     /**

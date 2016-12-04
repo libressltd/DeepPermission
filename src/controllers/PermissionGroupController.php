@@ -23,7 +23,7 @@ class PermissionGroupController extends Controller
      */
     public function index()
     {
-        return view("dp::permission_group.index");
+        return view("libressltd.deeppermission.permission_group.index");
     }
 
     /**
@@ -33,7 +33,7 @@ class PermissionGroupController extends Controller
      */
     public function create()
     {
-        return view("dp::permission_group.add");
+        return view("libressltd.deeppermission.permission_group.add");
     }
 
     /**
@@ -72,7 +72,7 @@ class PermissionGroupController extends Controller
     public function edit($id)
     {
     	$group = Permission_group::findOrFail($id);
-        return view("dp::permission_group.add", array("group" => $group));
+        return view("libressltd.deeppermission.permission_group.add", array("group" => $group));
     }
 
     /**

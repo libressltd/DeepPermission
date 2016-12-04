@@ -22,7 +22,7 @@ class PermissionController extends Controller
      */
     public function index()
     {
-        return view("dp::permission.index");
+        return view("libressltd.deeppermission.permission.index");
     }
 
     /**
@@ -32,7 +32,7 @@ class PermissionController extends Controller
      */
     public function create()
     {
-        return view("dp::permission.add");
+        return view("libressltd.deeppermission.permission.add");
     }
 
     /**
@@ -72,7 +72,7 @@ class PermissionController extends Controller
     public function edit($id)
     {
     	$permission = Permission::findOrFail($id);
-        return view("dp::permission.add", array("permission" => $permission));
+        return view("libressltd.deeppermission.permission.add", array("permission" => $permission));
     }
 
     /**

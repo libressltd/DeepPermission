@@ -21,7 +21,7 @@ class UserRoleController extends Controller
      */
     public function index()
     {
-    	return view("dp::user_role.index");
+    	return view("libressltd.deeppermission.user_role.index");
     }
 
     /**

@@ -22,7 +22,7 @@ class SettingController extends Controller
      */
     public function index()
     {
-        return view("dp::setting.index");
+        return view("libressltd.deeppermission.setting.index");
     }
 
     /**
@@ -123,16 +123,16 @@ class SettingController extends Controller
     {
         Excel::create('DeepPermissionExport', function($excel) {
             $excel->sheet('Permission_group', function($sheet) {
-                $sheet->loadView('dp::export.group');
+                $sheet->loadView('libressltd.deeppermission.export.group');
             });
             $excel->sheet('Permission', function($sheet) {
-                $sheet->loadView('dp::export.permission');
+                $sheet->loadView('libressltd.deeppermission.export.permission');
             });
             $excel->sheet('Role', function($sheet) {
-                $sheet->loadView('dp::export.role');
+                $sheet->loadView('libressltd.deeppermission.export.role');
             });
             $excel->sheet('Role_permission', function($sheet) {
-                $sheet->loadView('dp::export.role_permission');
+                $sheet->loadView('libressltd.deeppermission.export.role_permission');
             });
         })->export('xls');
     }

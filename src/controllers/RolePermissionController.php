@@ -22,7 +22,7 @@ class RolePermissionController extends Controller
     public function index($role_id)
     {
     	$role = Role::findOrFail($role_id);
-        return view("dp::role.permission.index", array("role" => $role));
+        return view("libressltd.deeppermission.role.permission.index", array("role" => $role));
     }
 
     /**
