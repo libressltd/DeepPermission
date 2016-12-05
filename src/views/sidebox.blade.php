@@ -3,7 +3,7 @@
 		<div class="box-header with-border">
 			<h3 class="box-title">Role &amp; Permission</h3>
 		</div>
-		<div class-"box-body">
+		<div class="box-body">
 			<ul class="nav nav-pills nav-stacked">
 				@if (Auth::user()->hasPermission("user_role.view"))
 				<li class="@yield('sidebox_user_role')">
