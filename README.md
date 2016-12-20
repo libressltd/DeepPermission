@@ -45,7 +45,7 @@ Add this row in the end of scripts.blade.php
 
 Add this row to Http\Kernel.php in $routeMiddleware
 
-``php
+```php
 
 'dppermission' => \App\Http\Middleware\DPPermissionMiddleware::class,
 'dprole' => \App\Http\Middleware\DPRoleMiddleware::class,
