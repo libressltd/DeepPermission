@@ -18,12 +18,12 @@ class DPPermissionMiddleware
     {
         if (!Auth::user())
         {
-            abort(401);
+            return view("errors.503");
         }
 
         if (!Auth::user()->hasPermission($permission))
         {
-            abort(403);
+            return view("errors.503");
         }
         return $next($request);
     }
