@@ -40,6 +40,16 @@ Add this row in the end of scripts.blade.php
 
 ```php
 @yield('dp_script')
+
+```
+
+Add this row to Http\Kernel.php in $routeMiddleware
+
+``php
+
+'dppermission' => \App\Http\Middleware\DPPermissionMiddleware::class,
+'dprole' => \App\Http\Middleware\DPRoleMiddleware::class,
+
 ```
 
 ### Step 5 (optional): If you want a user pass all the permission, add LIBRE_DP_ADMIN_ID to your .env file
@@ -66,5 +76,10 @@ User::withRole("role.code");
 
 //Query with permission code (include user who has role which has permission)
 User::withPermission("permission.code");
+
+// Using middleware
+
+middleware("dppermission:admin.read");
+middleware("dprole:admin");
 
 ```
