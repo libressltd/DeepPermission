@@ -1,4 +1,4 @@
-@extends('dp::app')
+@extends('app')
 
 @section ('contentheader_title')
 {{ trans('deeppermission.header.title') }}
@@ -12,7 +12,7 @@ active
 active
 @endsection
 
-@section('main-content')
+@section('content')
 <div class="row">
 	@include("libressltd.deeppermission.sidebox")
 	<div class="col-md-9">

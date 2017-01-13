@@ -1,4 +1,10 @@
-@extends('layouts.app')
+@extends('app')
+
+@section ('content')
+<section id="widget-grid" class="">
+	@yield('main-content')
+</section>
+@endsection
 
 @section ('dp_script')
 

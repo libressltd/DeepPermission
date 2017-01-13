@@ -3,9 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Alsofronie\Uuid\Uuid32ModelTrait;
+use Auth;
 
 class Role extends Model
 {
+    use Uuid32ModelTrait;
+
 	protected $fillable = array('code');
     public function permissions()
     {
@@ -24,4 +28,22 @@ class Role extends Model
 		$group->save();
 		return $group;
 	}
+
+    static public function boot()
+    {
+    	Role::bootUuid32ModelTrait();
+        Role::saving(function ($role) {
+        	if (Auth::user())
+        	{
+	            if ($role->id)
+	            {
+	            	$role->updated_by = Auth::user()->id;
+	            }
+	            else
+	            {
+					$role->created_by = Auth::user()->id;
+	            }
+	        }
+        });
+    }
 }

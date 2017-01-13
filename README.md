@@ -12,21 +12,31 @@ composer require libressltd/deeppermission
 LIBRESSLtd\DeepPermission\DeepPermissionServiceProvider::class, 
 LIBRESSLtd\LBForm\LBFormServiceProvider::class,
 Maatwebsite\Excel\ExcelServiceProvider::class,
+Collective\Html\HtmlServiceProvider::class,
+LIBRESSLtd\LBSA\LBSAServiceProvider::class,
 
 //Fadecade
 
 'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+'Form' => Collective\Html\FormFacade::class,
+'Html' => Collective\Html\HtmlFacade::class,
 
 ```
 
 ### Step 3: Publish vendor
 
+php artisan vendor:publish --tag=lbsa_init --force
 php artisan vendor:publish --tag=deeppermission --force
+
+php artisan migrate
 
 ### Step 4: Add following line to User Model (Remember to move User.php to app/Models) or you can find the newest version in vendor/libresslt/deeppermission/src/User.php
 	
 	
 ```php
+
+
+use LIBRESSLtd\DeepPermission\Traits\DPUserModelTrait;
 
 class User extends Authenticatable
 {
@@ -60,6 +70,8 @@ LIBRE_DP_ADMIN_ID={{user_id}}
 LIBRE_DP_ADMIN_ID=1
 
 ```
+
+### Step 6: (for LBSA only) Move example/app.blade.php to views root folder and include libressltd.deeppermission.sidebar view
 
 ### Supported function
 

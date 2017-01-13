@@ -4,9 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Permission_group;
+use Alsofronie\Uuid\Uuid32ModelTrait;
+use Auth;
 
 class Permission extends Model
 {
+    use Uuid32ModelTrait;
+
 	protected $fillable = array('code');
 	
     public function group()
@@ -42,4 +46,22 @@ class Permission extends Model
 
 		return $permission;
 	}
+
+    static public function boot()
+    {
+    	Permission::bootUuid32ModelTrait();
+        Permission::saving(function ($permission) {
+        	if (Auth::user())
+        	{
+	            if ($permission->id)
+	            {
+	            	$permission->updated_by = Auth::user()->id;
+	            }
+	            else
+	            {
+					$permission->created_by = Auth::user()->id;
+	            }
+	        }
+        });
+    }
 }
