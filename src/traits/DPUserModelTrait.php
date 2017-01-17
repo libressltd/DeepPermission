@@ -62,7 +62,7 @@ trait DPUserModelTrait {
 	
 	public function hasRole($role_code)
 	{
-		if (Auth::user() && Auth::user()->id == env("LIBRE_DP_ADMIN_ID", -1))
+		if ($this->id == env("LIBRE_DP_ADMIN_ID", -1))
 		{
 			return TRUE;
 		}
@@ -79,7 +79,7 @@ trait DPUserModelTrait {
 	
 	public function hasPermission($permission_code)
 	{
-		if (Auth::user() && Auth::user()->id == env("LIBRE_DP_ADMIN_ID", -1))
+		if ($this->id == env("LIBRE_DP_ADMIN_ID", -1))
 		{
 			return TRUE;
 		}
