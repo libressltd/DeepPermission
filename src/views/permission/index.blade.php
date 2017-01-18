@@ -1,10 +1,10 @@
 @extends('app')
 
-@section('sidemenu_deeppermission')
+@section('sidebar_dp')
 active
 @endsection
 
-@section('sidemenu_deeppermission_permission')
+@section('sidebar_dp_permission')
 active
 @endsection
 

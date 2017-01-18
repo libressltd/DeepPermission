@@ -4,11 +4,11 @@
 {{ trans('deeppermission.header.title') }}
 @endsection
 
-@section ('sidebox_permission')
+@section ('sidebar_dp')
 active
 @endsection
 
-@section ('sidebar_permission')
+@section ('sidebar_dp_permission')
 active
 @endsection
 
