@@ -6,9 +6,6 @@
         "acacha/admin-lte-template-laravel": "*",
         "libressltd/lbform": "*",
         "maatwebsite/excel": "~2.1.0",
-        "libressltd/lbform": "*",
-        "maatwebsite/excel": "~2.1.0",
-        "libressltd/lbsa": "*",
         "alsofronie/eloquent-uuid": "*"
     },
     "license": "MIT",
