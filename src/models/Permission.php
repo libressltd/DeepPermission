@@ -28,6 +28,21 @@ class Permission extends Model
         return $this->belongsToMany('App\Models\User', "user_id", "permission_id", "user_permission");
     }
 	
+	static public function all_to_option()
+	{
+		$objects = Permission::all();
+		$array = array();
+		foreach ($objects as $object)
+		{
+			$array[] = array(
+				"name" => $object->name,
+				"value" => $object->id
+			);
+		}
+		
+		return $array;
+	}
+	
 	static public function addIfNotExist($permission_name, $permission_code)
 	{
 		$permission_component = explode(".", $permission_code);

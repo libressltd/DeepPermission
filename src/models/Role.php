@@ -21,6 +21,21 @@ class Role extends Model
         return $this->belongsToMany('App\Models\User', "user_roles", "role_id", "user_id");
     }
 	
+	static public function all_to_option()
+	{
+		$objects = Role::all();
+		$array = array();
+		foreach ($objects as $object)
+		{
+			$array[] = array(
+				"name" => $object->name,
+				"value" => $object->id
+			);
+		}
+		
+		return $array;
+	}
+	
 	static public function addIfNotExist($role_name, $role_code)
 	{
 		$group = Role::firstOrNew(array("code" => $role_code));

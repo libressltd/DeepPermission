@@ -15,15 +15,19 @@ class DeepPermissionServiceProvider extends ServiceProvider
     {
         $this->loadViewsFrom(__DIR__.'/views/role', 'role');
         $this->loadViewsFrom(__DIR__.'/views', 'dp');
-		$this->publishes([
-	        __DIR__.'/views' => base_path('resources/views/libressltd/deeppermission'),
-	        __DIR__.'/migrations' => base_path('database/migrations'),
-	        __DIR__.'/models' => base_path('app/Models'),
-	        __DIR__.'/requests' => base_path('app/Http/Requests/DeepPermission'),
-            __DIR__.'/config' => base_path('config'),
+        $this->publishes([
+            __DIR__.'/views' => base_path('resources/views/libressltd/deeppermission'),
+            __DIR__.'/migrations' => base_path('database/migrations'),
+            __DIR__.'/models' => base_path('app/Models'),
+            __DIR__.'/requests' => base_path('app/Http/Requests/DeepPermission'),
             __DIR__.'/middlewares' => base_path('app/Http/Middleware'),
             __DIR__.'/lang/en/deeppermission.php' => base_path('resources/lang/en/deeppermission.php'),
-	    ], 'deeppermission');
+        ], 'deeppermission');
+        $this->loadViewsFrom(__DIR__.'/views', 'dp');
+        $this->publishes([
+
+            __DIR__.'/config' => base_path('config'),
+        ], 'deeppermission_config');
     }
 
     /**
