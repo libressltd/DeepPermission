@@ -35,7 +35,7 @@ class Permission extends Model
 		foreach ($objects as $object)
 		{
 			$array[] = array(
-				"name" => $object->name,
+				"name" => $object->code,
 				"value" => $object->id
 			);
 		}
