@@ -3,6 +3,8 @@
 namespace LIBRESSLtd\DeepPermission\Traits;
 
 use Auth;
+use App\Models\Permission;
+use App\Models\Role;
 
 trait DPUserModelTrait {
     public $__localPermissions = NULL;
