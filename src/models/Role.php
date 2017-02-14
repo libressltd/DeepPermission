@@ -39,7 +39,10 @@ class Role extends Model
 	static public function addIfNotExist($role_name, $role_code)
 	{
 		$group = Role::firstOrNew(array("code" => $role_code));
-		$group->name = $role_name;
+		if ($role_name !== false)
+		{
+			$group->name = $role_name;
+		}
 		$group->save();
 		return $group;
 	}

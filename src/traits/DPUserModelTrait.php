@@ -62,6 +62,10 @@ trait DPUserModelTrait {
 	
 	public function hasRole($role_code)
 	{
+		if (config("deeppermission.autofill"))
+		{
+			Role::addIfNotExist(false, $role_code);
+		}
 		if ($this->id == env("LIBRE_DP_ADMIN_ID", -1))
 		{
 			return TRUE;
@@ -79,6 +83,10 @@ trait DPUserModelTrait {
 	
 	public function hasPermission($permission_code)
 	{
+		if (config("deeppermission.autofill"))
+		{
+			Permission::addIfNotExist(false, $permission_code);
+		}
 		if ($this->id == env("LIBRE_DP_ADMIN_ID", -1))
 		{
 			return TRUE;
@@ -96,6 +104,10 @@ trait DPUserModelTrait {
 
     public function scopeWithRole($query, $role_code)
     {
+		if (config("deeppermission.autofill"))
+		{
+			Role::addIfNotExist(false, $role_code);
+		}
         return $this->whereHas('roles', function ($query) use ($role_code) {
             $query->where('code', '=', $role_code);
         });
@@ -103,6 +115,10 @@ trait DPUserModelTrait {
 
     public function scopeWithPermission($query, $permission_code)
     {
+		if (config("deeppermission.autofill"))
+		{
+			Permission::addIfNotExist(false, $permission_code);
+		}
         return $this->whereHas('permissions', function ($query) use ($permission_code) {
             $query->where('code', '=', $permission_code);
         })->orWhereHas('roles', function ($query) use ($permission_code) {

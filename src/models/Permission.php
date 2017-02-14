@@ -55,7 +55,10 @@ class Permission extends Model
 		}
 		
 		$permission = Permission::firstOrNew(array("code" => $permission_code));
-		$permission->name = $permission_name;
+		if ($permission_name !== false)
+		{
+			$permission->name = $permission_name;
+		}
 		$permission->permission_group_id = $group->id;
 		$permission->save();
 
