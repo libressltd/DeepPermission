@@ -4,11 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Alsofronie\Uuid\Uuid32ModelTrait;
+use LIBRESSLtd\LBForm\Traits\LBDatatableTrait;
 use Auth;
 
 class Role extends Model
 {
-    use Uuid32ModelTrait;
+    use Uuid32ModelTrait, LBDatatableTrait;
 
 	protected $fillable = array('code');
     public function permissions()
@@ -20,21 +21,6 @@ class Role extends Model
     {
         return $this->belongsToMany('App\Models\User', "user_roles", "role_id", "user_id");
     }
-	
-	static public function all_to_option()
-	{
-		$objects = Role::all();
-		$array = array();
-		foreach ($objects as $object)
-		{
-			$array[] = array(
-				"name" => $object->code,
-				"value" => $object->id
-			);
-		}
-		
-		return $array;
-	}
 	
 	static public function addIfNotExist($role_name, $role_code)
 	{

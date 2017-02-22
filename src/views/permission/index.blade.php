@@ -25,7 +25,7 @@ active
         <article class="col-lg-12">
         	@box_open(trans('deeppermission.permission.title'))
                 <div>
-                    <div class="widget-body">
+                    <div class="widget-body no-padding">
                         <div class="table-responsive">
 							<table class="table table-bordered table-hover">
 								<thead>
@@ -66,9 +66,8 @@ active
 										<td></td>
 										<td>{!! Form::lbText("name", "", "", trans('deeppermission.permission.name'), null, config("deeppermission.CNF_REQUIRE_ANUM")) !!}</td>
 										<td>{!! Form::lbText("code", "", "", trans('deeppermission.permission.code'), null, config("deeppermission.CNF_REQUIRE_ANUM_AND_POINT")) !!}</td>
-										<td>{!! Form::lbSelect2("permission_group_id", "0", App\Models\Permission_group::all_to_option(), "") !!}</td>
+										<td>{!! Form::lbSelect2("permission_group_id", "0", App\Models\Permission_group::toOption(), null) !!}</td>
 										<td>{!! Form::lbSubmit() !!}</td>
-										<td></td>
 										{!! Form::close() !!}
 								     </tr>
 									@endif

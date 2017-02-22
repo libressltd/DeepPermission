@@ -26,7 +26,7 @@ active
         <article class="col-lg-12">
         	@box_open(trans('deeppermission.group.title'))
                 <div>
-                    <div class="widget-body">
+                    <div class="widget-body no-padding">
                         <div class="table-responsive">
 							<table class="table table-bordered table-hover">
 								<thead>

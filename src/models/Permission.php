@@ -5,11 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Permission_group;
 use Alsofronie\Uuid\Uuid32ModelTrait;
+use LIBRESSLtd\LBForm\Traits\LBDatatableTrait;
 use Auth;
 
 class Permission extends Model
 {
-    use Uuid32ModelTrait;
+    use Uuid32ModelTrait, LBDatatableTrait;
 
 	protected $fillable = array('code');
 	
@@ -27,21 +28,6 @@ class Permission extends Model
     {
         return $this->belongsToMany('App\Models\User', "user_id", "permission_id", "user_permission");
     }
-	
-	static public function all_to_option()
-	{
-		$objects = Permission::all();
-		$array = array();
-		foreach ($objects as $object)
-		{
-			$array[] = array(
-				"name" => $object->code,
-				"value" => $object->id
-			);
-		}
-		
-		return $array;
-	}
 	
 	static public function addIfNotExist($permission_name, $permission_code)
 	{

@@ -27,7 +27,7 @@ active
 						$users = App\Models\User::with("roles")->paginate(30);
 					?>
 					{!! Form::open(array("url" => "user_role", "method" => "post")) !!}
-                    <div class="widget-body">
+                    <div class="widget-body no-padding">
                         <div class="table-responsive">
 							<table class="table table-bordered table-hover">
 								<thead>
@@ -73,11 +73,11 @@ active
 			                </table>
 			                {{ $users->links() }}
 			            </div>
-			            <footer>
+			            <div class="widget-footer" style="text-align: left;">
 			                <button type="submit" class="btn btn-primary">
 			                    {{ trans('general.submit')}}
 			                </button>
-			            </footer>
+			            </div>
                     </div>
                 </div>
             @box_close

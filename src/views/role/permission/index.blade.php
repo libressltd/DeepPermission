@@ -28,28 +28,30 @@ active
                 <div>
                     {!! Form::open(array("url" => "/role/$role->id/permission", "method" => "post")) !!}
                     <div class="widget-body">
-                    	@foreach (App\Models\Permission_group::all() as $group)
-                        	<div class="col-lg-12">
-                        		<h4>{{ $group->name }}</h4>
-                        	</div>
-                        	@foreach ($group->permissions as $permission)
-                        	<div class="col-lg-4">
-                        		<input name="permission_id[]" type="checkbox" value="{{ $permission->id }}"
-                        		<?php
-                        			foreach ($role->permissions as $rp)
-        							{
-        								if ($permission->id === $rp->id)
-        								{
-        									echo "checked"; break;
-        								}
-        							}
-                        		?>
-                        		>
-                        		{{ $permission->name  }} ({{ $permission->code }})
-                        	</div>
-                        	@endforeach
-                        @endforeach
-                        <div class="col-lg-12">
+                        <div class="row">
+                        	@foreach (App\Models\Permission_group::all() as $group)
+                            	<div class="col-lg-12">
+                            		<h4>{{ $group->name }}</h4>
+                            	</div>
+                            	@foreach ($group->permissions as $permission)
+                            	<div class="col-lg-4">
+                            		<input name="permission_id[]" type="checkbox" value="{{ $permission->id }}"
+                            		<?php
+                            			foreach ($role->permissions as $rp)
+            							{
+            								if ($permission->id === $rp->id)
+            								{
+            									echo "checked"; break;
+            								}
+            							}
+                            		?>
+                            		>
+                            		{{ $permission->name  }} ({{ $permission->code }})
+                            	</div>
+                            	@endforeach
+                            @endforeach
+                        </div>
+                        <div class="widget-footer" style="text-align: left;">
                             {!! Form::lbSubmit() !!}
                         </div>
                     </div>
