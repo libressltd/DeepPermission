@@ -18,12 +18,12 @@ class DPRoleMiddleware
     {
         if (!Auth::user())
         {
-            return view("errors.503");
+            abort(503, "Unauthorized request");
         }
 
         if (!Auth::user()->hasRole($role))
         {
-            return view("errors.503");
+            abort(503, "Unauthorized request");
         }
         return $next($request);
     }
